@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carro de compras</title>
+  <!--CSS-->
+  <link rel="stylesheet" type="text/css" href="/css/estilocarro.css" media="screen" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+  
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/scriptcarro.js"></script>
+
+  <%- include("parts/head") %>
+  <body>
+    <%- include("parts/nav") %>
+
+  <!--Tabla Carrito de Compras-->
+  <div class="container px-4 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+      <div class="col-5">
+        <h4 class="heading">Carro de compras</h4>
+      </div>
+    </div>
+    <form id="shopping-cart" action="shoppingcart">
+      <table class="shopping-cart">
+        <thead>
+          <tr>
+            <th scope="col">Producto</th>
+            <th scope="col">Talla</th>
+            <th scope="col">Color</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Tienda</th>
+            <th scope="col" colspan="2">Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class='pname'>Relaxed Fit Cotton T-shirt</td>
+            <td class='talla'>M</td>
+            <td class='color'>Black/Smiley®</td>
+            <td class='pqty'><input type='text' value="1" class='qty' /></td>
+            <td class='tienda'>H&M</td>
+            <td class='pprice'>$19.99</td>
+            <td class='pdelete'><a href='' data-product='" + product + "'>&times;</a></td>
+          </tr>
+          </tr>
+        </tbody>
+      </table>
+      <p id="sub-total">
+        <strong>Sub Total</strong>: <span id="stotal">$19.99</span>
+      </p>
+      <ul id="shopping-cart-actions">
+        <li>
+          <input type="submit" name="update" id="update-cart" class="btn" value="Actualizar Carro" />
+        </li>
+        <li>
+          <input type="submit" name="delete" id="empty-cart" class="btn" value="Vaciar Carro" />
+        </li>
+        <li>
+          <a href="servicios" class="btn" id="return-btn">Volver</a>
+        </li>
+      </ul>
+    </form>
+  </div>
+
+  <div class="container px-4 py-5 mx-auto">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="row">
+            <div class="col-lg-3 radio-group">
+              <div class="row d-flex px-3 radio">
+                <img class="pay" src="https://i.imgur.com/cMk1MtK.jpg" />
+                <p class="my-auto">PayPal</p>
+              </div>
+              <div class="row d-flex px-3 radio gray">
+                <img class="pay" src="https://i.imgur.com/OdxcctP.jpg" />
+                <p class="my-auto">Tarjeta de Debito</p>
+              </div>
+              <div class="row d-flex px-3 radio gray mb-3">
+                <img class="pay" src="https://i.imgur.com/WIAP9Ku.jpg" />
+                <p class="my-auto">Tarjeta de Credito</p>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="row px-2">
+                <div class="form-group col-md-6">
+                  <label class="form-control-label">Titular de la Tarjeta</label>
+                  <input type="text" id="cname" name="cname" placeholder="Johnny Doe" />
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="form-control-label">N°. de Tarjeta</label>
+                  <input type="text" id="cnum" name="cnum" placeholder="1111 2222 3333 4444" />
+                </div>
+              </div>
+              <div class="row px-2">
+                <div class="form-group col-md-6">
+                  <label class="form-control-label">Caducidad</label>
+                  <input type="text" id="exp" name="exp" placeholder="MM/YYYY" />
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="form-control-label">Codigo de Seguridad</label>
+                  <input type="text" id="cvv" name="cvv" placeholder="***" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 mt-2">
+              <div class="row d-flex justify-content-between px-4">
+                <p class="mb-1 text-left">Subtotal</p>
+                <h6 class="mb-1 text-right">$19.99</h6>
+              </div>
+              <div class="row d-flex justify-content-between px-4">
+                <p class="mb-1 text-left">Envío</p>
+                <h6 class="mb-1 text-right">$0.00</h6>
+              </div>
+              <div class="row d-flex justify-content-between px-4" id="tax">
+                <p class="mb-1 text-left">Total</p>
+                <h6 class="mb-1 text-right">$19.99</h6>
+              </div>
+              <a href="checkout" class="btn-block btn-blue" id="buy-btn">Comprar</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+     <!--hm-footer start-->
+     <section class="hm-footer">
+      <div class="container">
+        <div class="hm-footer-details">
+          <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <div class="hm-footer-widget">
+                <div class="hm-foot-title">
+                  <div class="logo">
+                    <a class="navbar-brand" href="index.html">
+                      <p
+                        style="
+                          color: #fff;
+                          font-size: 30px;
+                          padding: 0 0 0 70px;
+                        "
+                      >
+                        WorldShop
+                      </p>
+                    </a>
+                  </div>
+                  <!-- /.logo-->
+                </div>
+                <!--/.hm-foot-title-->
+                <div class="hm-foot-para">
+                  <p>Conoce una nueva forma de comprar el mundo.</p>
+                </div>
+                <!--/.hm-foot-para-->
+                <div class="hm-foot-icon">
+                  <ul>
+                    <li>
+                      <a href="#"
+                        ><i class="fa fa-facebook" aria-hidden="true"></i
+                      ></a>
+                    </li>
+                    <!--/li-->
+                    <li>
+                      <a href="#"
+                        ><i class="fa fa-google-plus" aria-hidden="true"></i
+                      ></a>
+                    </li>
+                    <!--/li-->
+                    <li>
+                      <a href="#"
+                        ><i class="fa fa-linkedin" aria-hidden="true"></i
+                      ></a>
+                    </li>
+                    <!--/li-->
+                    <li>
+                      <a href="#"
+                        ><i class="fa fa-twitter" aria-hidden="true"></i
+                      ></a>
+                    </li>
+                    <!--/li-->
+                  </ul>
+                  <!--/ul-->
+                </div>
+                <!--/.hm-foot-icon-->
+              </div>
+              <!--/.hm-footer-widget-->
+            </div>
+            <!--/.col-->
+            <div class="col-md-2 col-sm-6 col-xs-12">
+              <div class="hm-footer-widget">
+                <div class="hm-foot-title">
+                  <h4>Referencias</h4>
+                </div>
+                <!--/.hm-foot-title-->
+                <div class="footer-menu">
+                  <ul class="">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="about.html">Sobre Nosotros</a></li>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                  </ul>
+                </div>
+                <!-- /.footer-menu-->
+              </div>
+              <!--/.hm-footer-widget-->
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="hm-footer-widget">
+                <div class="hm-foot-title">
+                  <h4>Our Newsletter</h4>
+                </div>
+                <!--/.hm-foot-title-->
+                <div class="hm-foot-para">
+                  <p class="para-news">
+                    Suscríbete a nuestro newsletter y podrás conocer antes que
+                    todos promociones, nuevas noticias y muchos más...
+                  </p>
+                </div>
+                <!--/.hm-foot-para-->
+                <div class="hm-foot-email">
+                  <div class="foot-email-box">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Correo Electrónico"
+                    />
+                  </div>
+                  <!--/.foot-email-box-->
+                  <div class="foot-email-subscribe">
+                    <button type="button">Vamos</button>
+                  </div>
+                  <!--/.foot-email-icon-->
+                </div>
+                <!--/.hm-foot-email-->
+              </div>
+              <!--/.hm-footer-widget-->
+            </div>
+            <!--/.col-->
+          </div>
+          <!--/.row-->
+        </div>
+        <!--/.hm-footer-details-->
+      </div>
+      <!--/.container-->
+    </section>
+   
+    
+    <%- include("parts/footer") %>
+</body>
+
+</html>

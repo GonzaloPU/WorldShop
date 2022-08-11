@@ -1,0 +1,24 @@
+#brands {
+  width: 30em;
+  margin: 53px 50px 20px 20px;
+}
+.card-body h5 {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+#whatsapp {
+  width: 17em;
+  margin: 10px 20px 20px 40px;
+}
+.card-text {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 20px;
+}
+.container .btn {
+  margin: 20px 20px 80px 20px;
+  padding: 10px 40px;
+  font-size: 20px;
+}

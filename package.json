@@ -1,0 +1,30 @@
+{
+  "name": "worldshop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src",
+    "dev": "nodemon src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "bootstrap-icons": "^1.8.2",
+    "cheerio": "^1.0.0-rc.11",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-mysql-session": "^2.1.8",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.1",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "puppeteer": "^15.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "description": ""
+}

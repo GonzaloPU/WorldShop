@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesión</title>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <!--CSS-->
+    <link rel="stylesheet" href="/css/login-style.css" />
+    <link rel="stylesheet" href="/css/loader.css" />
+  </head>
+  <body>
+    <div class="contenedor_loader"><div class="loader"></div></div>
+    <div id="login">
+      <div id="formLogin">
+        <h1>Bienvenido</h1>
+
+        <form action="auth" method="POST">
+        <div class="inputContainer">
+          <input id="user" name="user" type="text" class="inputLogin" placeholder=" " />
+          <label  class="labelLogin">Usuario</label>
+        </div>
+
+        <div class="inputContainer">
+          <input id="pass" name="pass" type="password" class="inputLogin" placeholder=" " />
+          <label class="labelLogin">Contraseña</label>
+        </div>
+        <div class="registration">
+          <a href="/registration"
+            ><label class="labelLogin" style="cursor: pointer"
+              >No tienes una cuenta aún? Registrate aquí</label
+            ></a
+          >
+        </div>
+
+        <a href="/profile"
+          ><input type="submit" class="submitButton" value="Sign In"
+        /></a>
+      </form>
+      </div>
+    </div>
+
+    <script src="/js/loader.js"></script>
+  </body>
+</html>

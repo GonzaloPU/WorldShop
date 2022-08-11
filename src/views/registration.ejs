@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="/css/registration-style.css" />
+
+    <!----===== Iconscout CSS ===== -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+
+    <title>Regístrate | WorldShop</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>Registrarse</header>
+
+      <form action="/regi" method="POST">
+        <div class="form first">
+          <div class="details personal">
+            <span class="title">Datos Personales</span>
+
+            <div class="fields">
+              <div class="input-field"  >
+                <label>Usuario</label>
+                <input type="text"name="user"id="user" placeholder="Ingresa tu usuario" required />
+              </div>
+
+              <div class="input-field" id="idCl" >
+                <label>RUT</label>
+                <input type="text"name="idCl" placeholder="12.345.678-9" required />
+              </div>
+
+              <div class="input-field" id="ema"  >
+                <label>Email</label>
+                <input type="email"name="ema" placeholder="Ingresa tu correo electrónico" required />
+              </div>
+              <div class="input-field" id="pass" >
+                <label>Ingresa tu contraseña</label>
+                <input
+                  type="password"
+                  name="pass"
+                  
+                  required
+                />
+              </div>
+
+              <div class="input-field" id="num" >
+                <label>Número Telefónico</label>
+                <input
+                  type="tel"
+                  name="num"
+                  placeholder="+569XXXXXXXX"
+                  required
+                />
+              </div>
+
+              <div class="input-field" id="gen" >
+                <label>Género</label>
+                <select name="gen" required>
+                  <option disabled selected>Selecciona un género</option>
+                  <option>Hombre</option>
+                  <option>Mujer</option>
+                  <option>No Binario</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          
+
+            <div class="buttons">
+              <div class="backBtn">
+                <i class="uil uil-navigator"></i>
+                <a href="/login" style="text-decoration: none; color:#FFF;"><span class="btnText">Atrás</span></a>
+              </div>
+
+              <button class="sumbit">
+                <span class="btnText">Registrarse</span>
+                <i class="uil uil-navigator"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!--<script src="script.js"></script>-->
+   
+  
+  </body>
+</html>

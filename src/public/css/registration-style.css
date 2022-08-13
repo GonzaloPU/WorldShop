@@ -11,7 +11,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url("/images/login/login2.jpg") no-repeat center;
+  background: url("/images/login/login1.jpg") no-repeat center;
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.25);
 }
@@ -20,7 +20,7 @@ body {
   max-width: 900px;
   width: 100%;
   height: 32em;
-  border-radius: 20px 100px;
+  border-radius: 20px ;
   padding: 30px;
   margin: 0 15px;
   background-color: #f8f9fa;
@@ -41,7 +41,7 @@ body {
   height: 3px;
   width: 27px;
   border-radius: 8px;
-  background-color: #4070f4;
+  background-color: #da932a;
 }
 .container form {
   position: relative;
@@ -132,7 +132,7 @@ select {
   color: #fff;
   border-radius: 5px;
   margin: 25px 0;
-  background-color: #4070f4;
+  background-color: #ce8a25;
   transition: all 0.3s linear;
   cursor: pointer;
 }
@@ -141,7 +141,7 @@ select {
   font-weight: 400;
 }
 form button:hover {
-  background-color: #265df2;
+  background-color: #e79d2e;
 }
 form button i,
 form .backBtn i {

@@ -370,7 +370,7 @@ html,body{
 	display: inline-block;
     background: #f5f5fb;
     padding: 17px 50px;
-    color: #5549af;
+    color: #774d2b;
     border: 1px solid #f5f5fb;
 	font-size:16px;
 	font-weight:600;
@@ -718,7 +718,7 @@ a:focus.service-btn{
 .statistics:before{
 	position:absolute;
 	content:'';
-	background: rgba(170,79,5,.2);;
+	background: rgba(170, 79, 5, 0.795);;
 	height:100%;
 	width:100%;
 	top:0;
@@ -754,9 +754,7 @@ a:focus.service-btn{
 .project{
 	padding: 117px 0 109px;
 }
-.project-details{
-	
-}
+
 .project-content {
     margin-top:62px;
 }
@@ -819,7 +817,7 @@ a:focus.service-btn{
 	position:absolute;
 	height:100%;
 	width:100%;
-	background:rgba(115,112,216,.75);
+	background:rgba(180, 119, 62, 0.849);
 	display:flex;
 	align-items:center;
 	text-transform: capitalize;
@@ -865,8 +863,8 @@ a:focus.service-btn{
 	letter-spacing: 1.2px;
 }
 .project-view {
-    background: #7370d8;
-    border: 1px solid #7370d8;
+    background: #d38337;
+    border: 1px solid #be7836;
     width:185px;
     height:52px;
     line-height: 50px;
@@ -881,7 +879,7 @@ a:focus.service-btn{
     transition: 0.5s ease-in-out;
 }
 .project-view:hover {
-	color: #7370d8;
+	color: #d38337;
 	background: transparent;
 }/*project-btn*/
 
@@ -890,7 +888,7 @@ a:focus.service-btn{
 --------------------------------------*/
 .team{
 	padding: 120px 0;
-	background: #908ddc;
+	background: #d38337;
 }
 .team.team-main{
 	background: #fff;
@@ -1195,7 +1193,7 @@ a:active.learn-btn{
 		12. Client
 --------------------------------------*/
 .clients{
-	background: #7370d8;
+	background: #a76b34;
 	padding: 53px 0 0px;
 }
 .clients-area {
@@ -1227,7 +1225,7 @@ a:active.learn-btn{
 }
 /*single-news-box*/
 .single-news-box{
-	box-shadow:0 5px 30px 0px rgba(115,112,215,.2);
+	box-shadow:0 5px 30px 0px rgba(146, 97, 33, 0.2);
 	min-height: 504px;
 	margin-bottom: 13px;
 	-webkit-transition: .5s;
@@ -1340,7 +1338,7 @@ a:active.learn-btn{
 	position: relative;
 }
 .contact:before{
-	background:rgba(115,112,215,.85);
+	background:rgba(212, 140, 32, 0.85);
 	position:absolute;
 	left:0;
 	top:0;
@@ -1399,10 +1397,10 @@ a:active.learn-btn{
 	display:flex;
 	align-items:center;
 	justify-content:center;
-	background: #7370d8;
+	background: #af6015;
 	height:50px;
 	width: 195px;
-	border:1px solid #7370d8;
+	border:1px solid #a35a15;
 	text-transform:uppercase;
 	font-family: 'Poppins', sans-serif;
 	margin-top: 3px;
@@ -1430,9 +1428,9 @@ a:active.learn-btn{
 }
 
 .single-contact-btn:hover button.contact-btn {
-	color:#7370d8;
+	color:#af6015;
 	background:#fff;
-	border:1px solid #7370d8;
+	border:1px solid #c26c1b;
 }
 
 /*--contct button--*/
@@ -1546,7 +1544,7 @@ a:active.learn-btn{
 --------------------------------------*/
 .hm-footer{
     padding-bottom:68px;
-    background: #212135;
+    background: #523b1d;
 }
 .hm-footer-details {
     margin-top: 120px;
@@ -1648,7 +1646,7 @@ a:active.learn-btn{
 	margin-top:35px;
 }
 .foot-email-box .form-control {
-	background:#3d3d4d;
+	background:#614533;
 	display: block;
     padding: 32px 32px 33px;
 	outline:0!important;
@@ -1663,7 +1661,7 @@ a:active.learn-btn{
 .foot-email-subscribe button{
     width:65px;
     height:65px;
-    background: #7370d8;
+    background: #bb8c60;
 	font-size:14px;
     color: #fff;
     text-transform: uppercase;
@@ -1710,7 +1708,7 @@ a:active.learn-btn{
 		17. Footer- copyright
 --------------------------------------*/
 .footer-copyright {
-	background:#1a1a2a;
+	background:#3b2710;
 	padding: 30px 0 35px;
 }
 .foot-copyright{
@@ -1736,11 +1734,7 @@ a:active.learn-btn{
 	-o-transition:all 0.2s linear;
     transition: all 0.2s linear;
 }
-.foot-menu   li a,
-.foot-menu   li a:hover,
-.foot-menu   li a:focus{
-	
-}
+
 .foot-menu  li {
 	position:relative;
 	padding-left:42px;

@@ -69,5 +69,11 @@ router.get("/checkout", (req, res) => {
 router.get("/orden", (req, res) => {
   res.render("orden.ejs");
 });
+router.get("/admin-ped", (req, res) => {
+  res.render("admin-pedidos.ejs");
+});
+router.get("/stores", (req, res) => {
+  res.render("stores.ejs");
+});
 
 module.exports = router;

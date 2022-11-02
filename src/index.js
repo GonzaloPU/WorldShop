@@ -38,6 +38,7 @@ const connection = require("../database/database");
 const { randomInt } = require("crypto");
 const { Result } = require("express-validator");
 const { cp } = require("fs");
+const { parse } = require("path");
 app.use(
   session({
     secret: "secret",
@@ -149,12 +150,10 @@ app.post('/scrap', async(req,res)=>{
     
     
     await browser.close();
-    var usdPrice= Precio;
-    var clpPrice= Precio * 934;
     
       res.render("product-detail.ejs",{
       Titulo:Titulo,
-      clpPrice:clpPrice,
+      Precio:Precio,
       Color:Color,
       Imagen1:Imagen1,
       Imagen2:Imagen2
@@ -163,4 +162,26 @@ app.post('/scrap', async(req,res)=>{
 })();
 })
 
- 
+app.post('/sp', async(req,res)=>{
+  
+
+  
+    const data= req.body;
+
+    //Capturamos los datos
+
+    const Titulo= data.titulo;
+    const Color= data.color;
+    const Talla= data.talla;
+    const Precio= data.precio;
+
+    console.log(Color);
+  
+   /* res.render("shoppingcart.ejs",{
+      Title:Titulo,
+      Size:Talla,
+      Colors:Color,
+      Price:Precio
+    });
+*/
+  })

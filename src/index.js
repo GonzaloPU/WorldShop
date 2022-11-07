@@ -109,7 +109,8 @@ app.post('/auth', async(req,res)=>{
 })
 
 //Scraping Web
-app.post('/scrap', async(req,res)=>{
+//Inicio Scrapping H&M
+app.post('/scrapHm', async(req,res)=>{
   
 
 (async () => {
@@ -161,6 +162,288 @@ app.post('/scrap', async(req,res)=>{
   
 })();
 })
+
+//Scraping Web Section
+
+//Inicio Scrapping Adidas
+app.post('/scrapAdidas', async(req,res)=>{
+  
+
+  (async () => {
+    const data= req.body;
+    
+    const urls= data.url;
+  
+  
+    const browser = await puppeteer.launch({headless: false});
+    const page = await browser.newPage();
+    await page.goto(urls);
+    
+  
+    await page.waitForSelector('.ProductName-module--container__3e-gi h1')
+    
+      //Scraping Product Title
+      let title= await page.$('#product-title span');
+      let Titulo= await page.evaluate(el => el.textContent,title);
+
+      //Scraping Product Price
+      
+      let priceD= await page.$('#gl-price-item .gl-price-item gl-price-item--sale notranslate');
+
+      if(priceD=!null){
+        let Precio= await page.evaluate(el => el.textContent,priceD);
+      }else{
+        let price= await page.$('#gl-price-item .gl-price-item notranslate');
+        let Precio= await page.evaluate(el => el.textContent,price);
+      }
+      
+    
+      let colors= await page.$('#color-label');
+      let Color= await page.evaluate(el => el.textContent,colors);
+
+      const Imagen1= await page.$eval("#pdp__image-viewer__desktop-zoom__content img",img => img.src);
+      const Imagen2= await page.$eval(".view-cell-container___aqB7e #pdp__image-viewer__desktop-zoom__content  img",img => img.src);
+
+      console.log(('El titulo es: '+Titulo));
+      console.log(('El Precio es: '+Precio));
+      console.log(('El Color es: '+Color));
+      console.log(('url imagen es: '+Imagen1));
+      console.log(('url imagen es: '+Imagen2));
+  
+      
+       await browser.close();
+       res.render("product-detail.ejs",{
+        Titulo:Titulo,
+        Precio:Precio,
+        Color:Color,
+        Imagen1:Imagen1,
+        Imagen2:Imagen2
+      });
+     
+  })();
+  })
+  
+  //Inicio Scrapping Guess
+  app.post('/scrapGuess', async(req,res)=>{
+  
+
+    (async () => {
+      const data= req.body;
+      
+      const urls= data.url;
+    
+    
+      const browser = await puppeteer.launch({headless: false});
+      const page = await browser.newPage();
+      await page.goto(urls);
+      
+    
+      await page.waitForSelector('.ProductName-module--container__3e-gi h1')
+      
+        //Scraping Product Title
+        let title= await page.$('.ProductName-module--container__3e-gi h1');
+        let Titulo= await page.evaluate(el => el.textContent,title);
+        //Scraping Product Price
+        let price= await page.$('.ProductPrice-module--productItemPrice__2i2Hc .Price-module--black-large__2lI2s');
+        let Precio= await page.evaluate(el => el.textContent,price);
+        //Scraping Product Size
+        //let size= await page.$('#picker-1 .picker-list [data-code]');
+        //var Tamano = await page.$eval("select.option active", selectedValue=> selectedValue.value)
+        //let Tamano= await page.evaluate(el => el.textContent,size);
+       //Scraping Product Color
+        let colors= await page.$('.product-input-label');
+        let Color= await page.evaluate(el => el.textContent,colors);
+        const Imagen1= await page.$eval(".module.product-description.sticky-wrapper .product-detail-main-image-container img",img => img.src);
+        const Imagen2= await page.$eval(".pdp-secondary-image.pdp-image  img",img => img.src);
+        console.log(('El titulo es: '+Titulo));
+        console.log(('El Precio es: '+Precio));
+        //console.log(('El tamano es: '+Tamano));
+        console.log(('El Color es: '+Color));
+        console.log(('url imagen es: '+Imagen1));
+        console.log(('url imagen es: '+Imagen2));
+    
+        
+        
+        await browser.close();
+        
+          res.render("product-detail.ejs",{
+          Titulo:Titulo,
+          Precio:Precio,
+          Color:Color,
+          Imagen1:Imagen1,
+          Imagen2:Imagen2
+        });
+      
+    })();
+    })
+    
+    //Inicio Scrapping Calvin
+    app.post('/scrapCalvin', async(req,res)=>{
+  
+
+      (async () => {
+        const data= req.body;
+        
+        const urls= data.url;
+      
+      
+        const browser = await puppeteer.launch({headless: false});
+        const page = await browser.newPage();
+        await page.goto(urls);
+        
+      
+        await page.waitForSelector('.ProductName-module--container__3e-gi h1')
+        
+          //Scraping Product Title
+          let title= await page.$('.ProductName-module--container__3e-gi h1');
+          let Titulo= await page.evaluate(el => el.textContent,title);
+          //Scraping Product Price
+          let price= await page.$('.ProductPrice-module--productItemPrice__2i2Hc .Price-module--black-large__2lI2s');
+          let Precio= await page.evaluate(el => el.textContent,price);
+          //Scraping Product Size
+          //let size= await page.$('#picker-1 .picker-list [data-code]');
+          //var Tamano = await page.$eval("select.option active", selectedValue=> selectedValue.value)
+          //let Tamano= await page.evaluate(el => el.textContent,size);
+         //Scraping Product Color
+          let colors= await page.$('.product-input-label');
+          let Color= await page.evaluate(el => el.textContent,colors);
+          const Imagen1= await page.$eval(".module.product-description.sticky-wrapper .product-detail-main-image-container img",img => img.src);
+          const Imagen2= await page.$eval(".pdp-secondary-image.pdp-image  img",img => img.src);
+          console.log(('El titulo es: '+Titulo));
+          console.log(('El Precio es: '+Precio));
+          //console.log(('El tamano es: '+Tamano));
+          console.log(('El Color es: '+Color));
+          console.log(('url imagen es: '+Imagen1));
+          console.log(('url imagen es: '+Imagen2));
+      
+          
+          
+          await browser.close();
+          
+            res.render("product-detail.ejs",{
+            Titulo:Titulo,
+            Precio:Precio,
+            Color:Color,
+            Imagen1:Imagen1,
+            Imagen2:Imagen2
+          });
+        
+      })();
+      })
+
+      //Inicio Scrapping Nike
+      
+      app.post('/scrapNike', async(req,res)=>{
+  
+
+        (async () => {
+          const data= req.body;
+          
+          const urls= data.url;
+        
+        
+          const browser = await puppeteer.launch({headless: false});
+          const page = await browser.newPage();
+          await page.goto(urls);
+          
+        
+          await page.waitForSelector('.ProductName-module--container__3e-gi h1')
+          
+            //Scraping Product Title
+            let title= await page.$('.ProductName-module--container__3e-gi h1');
+            let Titulo= await page.evaluate(el => el.textContent,title);
+            //Scraping Product Price
+            let price= await page.$('.ProductPrice-module--productItemPrice__2i2Hc .Price-module--black-large__2lI2s');
+            let Precio= await page.evaluate(el => el.textContent,price);
+            //Scraping Product Size
+            //let size= await page.$('#picker-1 .picker-list [data-code]');
+            //var Tamano = await page.$eval("select.option active", selectedValue=> selectedValue.value)
+            //let Tamano= await page.evaluate(el => el.textContent,size);
+           //Scraping Product Color
+            let colors= await page.$('.product-input-label');
+            let Color= await page.evaluate(el => el.textContent,colors);
+            const Imagen1= await page.$eval(".module.product-description.sticky-wrapper .product-detail-main-image-container img",img => img.src);
+            const Imagen2= await page.$eval(".pdp-secondary-image.pdp-image  img",img => img.src);
+            console.log(('El titulo es: '+Titulo));
+            console.log(('El Precio es: '+Precio));
+            //console.log(('El tamano es: '+Tamano));
+            console.log(('El Color es: '+Color));
+            console.log(('url imagen es: '+Imagen1));
+            console.log(('url imagen es: '+Imagen2));
+        
+            
+            
+            await browser.close();
+            
+              res.render("product-detail.ejs",{
+              Titulo:Titulo,
+              Precio:Precio,
+              Color:Color,
+              Imagen1:Imagen1,
+              Imagen2:Imagen2
+            });
+          
+        })();
+        })
+        
+        //Inicio Scrapping Zara
+        app.post('/scrapZara', async(req,res)=>{
+  
+
+          (async () => {
+            const data= req.body;
+            
+            const urls= data.url;
+          
+          
+            const browser = await puppeteer.launch({headless: false});
+            const page = await browser.newPage();
+            await page.goto(urls);
+            
+          
+            await page.waitForSelector('.ProductName-module--container__3e-gi h1')
+            
+              //Scraping Product Title
+              let title= await page.$('.ProductName-module--container__3e-gi h1');
+              let Titulo= await page.evaluate(el => el.textContent,title);
+              //Scraping Product Price
+              let price= await page.$('.ProductPrice-module--productItemPrice__2i2Hc .Price-module--black-large__2lI2s');
+              let Precio= await page.evaluate(el => el.textContent,price);
+              //Scraping Product Size
+              //let size= await page.$('#picker-1 .picker-list [data-code]');
+              //var Tamano = await page.$eval("select.option active", selectedValue=> selectedValue.value)
+              //let Tamano= await page.evaluate(el => el.textContent,size);
+             //Scraping Product Color
+              let colors= await page.$('.product-input-label');
+              let Color= await page.evaluate(el => el.textContent,colors);
+              const Imagen1= await page.$eval(".module.product-description.sticky-wrapper .product-detail-main-image-container img",img => img.src);
+              const Imagen2= await page.$eval(".pdp-secondary-image.pdp-image  img",img => img.src);
+              console.log(('El titulo es: '+Titulo));
+              console.log(('El Precio es: '+Precio));
+              //console.log(('El tamano es: '+Tamano));
+              console.log(('El Color es: '+Color));
+              console.log(('url imagen es: '+Imagen1));
+              console.log(('url imagen es: '+Imagen2));
+          
+              
+              
+              await browser.close();
+              
+                res.render("product-detail.ejs",{
+                Titulo:Titulo,
+                Precio:Precio,
+                Color:Color,
+                Imagen1:Imagen1,
+                Imagen2:Imagen2
+              });
+            
+          })();
+          })
+          
+                              
+
+
+
 
 app.post('/sp', async(req,res)=>{
   

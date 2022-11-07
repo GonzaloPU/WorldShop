@@ -42,8 +42,23 @@ router.get("/login", (req, res) => {
 router.get("/registration", (req, res) => {
   res.render("registration.ejs");
 });
-router.get("/productourl", (req, res) => {
-  res.render("productourl.ejs");
+router.get("/H&M", (req, res) => {
+  res.render("product-url-hm.ejs");
+});
+router.get("/Nike", (req, res) => {
+  res.render("product-url-nike.ejs");
+});
+router.get("/Adidas", (req, res) => {
+  res.render("product-url-adidas.ejs");
+});
+router.get("/Guess", (req, res) => {
+  res.render("product-url-guess.ejs");
+});
+router.get("/CK", (req, res) => {
+  res.render("product-url-calvin.ejs");
+});
+router.get("/Zara", (req, res) => {
+  res.render("product-url-zara.ejs");
 });
 router.get("/shoppingcart", (req, res) => {
   res.render("shoppingcart.ejs");

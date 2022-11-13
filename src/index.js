@@ -180,7 +180,7 @@ app.post('/scrapAdidas', async(req,res)=>{
     await page.goto(urls);
     
   
-    await page.waitForSelector('.ProductName-module--container__3e-gi h1')
+    await page.waitForSelector('#product-title')
     
       //Scraping Product Title
       let title= await page.$('#product-title span');
@@ -292,26 +292,24 @@ app.post('/scrapAdidas', async(req,res)=>{
         await page.goto(urls);
         
       
-        await page.waitForSelector('.ProductName-module--container__3e-gi h1')
+        await page.waitForSelector('#pdptestdelete > div.main-region')
         
           //Scraping Product Title
-          let title= await page.$('.ProductName-module--container__3e-gi h1');
+          let title= await page.$('#pdptestdelete > div.main-region > div > div.ds-container.product-detail.product-wrapper.pid-23103100-201 > div:nth-child(1) > div.col-12.col-lg-4.js-buying-controls.spacing-buying-controls > div.product-details--desk > div.row > div > div.product-detail__name > h1');
           let Titulo= await page.evaluate(el => el.textContent,title);
+
           //Scraping Product Price
-          let price= await page.$('.ProductPrice-module--productItemPrice__2i2Hc .Price-module--black-large__2lI2s');
+          let price= await page.$('#pdptestdelete > div.main-region > div > div.ds-container.product-detail.product-wrapper.pid-23103020-030 > div:nth-child(1) > div.col-12.col-lg-4.js-buying-controls.spacing-buying-controls > div.product-details--desk > div.row > div > div.product-detail__prices > div > span:nth-child(1) > span > span');
           let Precio= await page.evaluate(el => el.textContent,price);
-          //Scraping Product Size
-          //let size= await page.$('#picker-1 .picker-list [data-code]');
-          //var Tamano = await page.$eval("select.option active", selectedValue=> selectedValue.value)
-          //let Tamano= await page.evaluate(el => el.textContent,size);
+          
          //Scraping Product Color
-          let colors= await page.$('.product-input-label');
+          let colors= await page.$('#pdpAttribute > label > span.variation__attr--value.variation__attr--name--mobile');
           let Color= await page.evaluate(el => el.textContent,colors);
-          const Imagen1= await page.$eval(".module.product-description.sticky-wrapper .product-detail-main-image-container img",img => img.src);
-          const Imagen2= await page.$eval(".pdp-secondary-image.pdp-image  img",img => img.src);
+          const Imagen1= await page.$eval("#pdptestdelete > div.main-region > div > div.ds-container.product-detail.product-wrapper.pid-23103100-201 > div:nth-child(1) > div.product-images.col-12.col-lg-8.large-margin.product-image-container-desk > div > div > div > div:nth-child(1) > img",img => img.src);
+          const Imagen2= await page.$eval("#pdptestdelete > div.main-region > div > div.ds-container.product-detail.product-wrapper.pid-23103100-201 > div:nth-child(1) > div.product-images.col-12.col-lg-8.large-margin.product-image-container-desk > div > div > div > div:nth-child(2) > img",img => img.src);
+
           console.log(('El titulo es: '+Titulo));
           console.log(('El Precio es: '+Precio));
-          //console.log(('El tamano es: '+Tamano));
           console.log(('El Color es: '+Color));
           console.log(('url imagen es: '+Imagen1));
           console.log(('url imagen es: '+Imagen2));
@@ -347,26 +345,23 @@ app.post('/scrapAdidas', async(req,res)=>{
           await page.goto(urls);
           
         
-          await page.waitForSelector('.ProductName-module--container__3e-gi h1')
+          await page.waitForSelector('#RightRail')
           
             //Scraping Product Title
-            let title= await page.$('.ProductName-module--container__3e-gi h1');
+            let title= await page.$('#pdp_product_title');
             let Titulo= await page.evaluate(el => el.textContent,title);
             //Scraping Product Price
-            let price= await page.$('.ProductPrice-module--productItemPrice__2i2Hc .Price-module--black-large__2lI2s');
-            let Precio= await page.evaluate(el => el.textContent,price);
-            //Scraping Product Size
-            //let size= await page.$('#picker-1 .picker-list [data-code]');
-            //var Tamano = await page.$eval("select.option active", selectedValue=> selectedValue.value)
-            //let Tamano= await page.evaluate(el => el.textContent,size);
+            let price= await page.$('#RightRail > div > div:nth-child(1) > div > div.d-lg-ib.mb0-sm.u-full-width.css-3rkuu4.css-1mzzuk6 > div > div > div > div > div');
+            let Precio= await page.evaluate(el => el.textContentL,price);
+            
+            
            //Scraping Product Color
-            let colors= await page.$('.product-input-label');
-            let Color= await page.evaluate(el => el.textContent,colors);
-            const Imagen1= await page.$eval(".module.product-description.sticky-wrapper .product-detail-main-image-container img",img => img.src);
-            const Imagen2= await page.$eval(".pdp-secondary-image.pdp-image  img",img => img.src);
+           let colors= await page.$('#RightRail > div > span > div > div > ul > li.description-preview__color-description.ncss-li');
+           let Color= await page.evaluate(el => el.textContent,colors);
+           const Imagen1= await page.$eval("#PDP > div.app-root > div > div:nth-child(4) > div.css-13pt6km > div.css-1rayx7p > div > ul > li.slide.selected > span > button > div > picture:nth-child(2) > img",img => img.src);
+           const Imagen2= await page.$eval("#PDP > div.app-root > div > div:nth-child(4) > div.css-13pt6km > div.css-1rayx7p > div > ul > li.slide.selected > span > button > div > picture:nth-child(2) > img",img => img.src);
             console.log(('El titulo es: '+Titulo));
             console.log(('El Precio es: '+Precio));
-            //console.log(('El tamano es: '+Tamano));
             console.log(('El Color es: '+Color));
             console.log(('url imagen es: '+Imagen1));
             console.log(('url imagen es: '+Imagen2));
@@ -374,7 +369,7 @@ app.post('/scrapAdidas', async(req,res)=>{
             
             
             await browser.close();
-            
+            /*
               res.render("product-detail.ejs",{
               Titulo:Titulo,
               Precio:Precio,
@@ -382,7 +377,7 @@ app.post('/scrapAdidas', async(req,res)=>{
               Imagen1:Imagen1,
               Imagen2:Imagen2
             });
-          
+          */
         })();
         })
         
@@ -401,26 +396,23 @@ app.post('/scrapAdidas', async(req,res)=>{
             await page.goto(urls);
             
           
-            await page.waitForSelector('.ProductName-module--container__3e-gi h1')
+            await page.waitForSelector('.product-detail-view__side-bar')
             
               //Scraping Product Title
-              let title= await page.$('.ProductName-module--container__3e-gi h1');
+              let title= await page.$('.product-detail-view__side-bar .product-detail-info__header h1');
               let Titulo= await page.evaluate(el => el.textContent,title);
               //Scraping Product Price
-              let price= await page.$('.ProductPrice-module--productItemPrice__2i2Hc .Price-module--black-large__2lI2s');
+              let price= await page.$('#main > article > div.product-detail-view__content > div > div.product-detail-view__side-bar > div.product-detail-info > div.product-detail-info__price > div > span > span > span > div > span');
               let Precio= await page.evaluate(el => el.textContent,price);
-              //Scraping Product Size
-              //let size= await page.$('#picker-1 .picker-list [data-code]');
-              //var Tamano = await page.$eval("select.option active", selectedValue=> selectedValue.value)
-              //let Tamano= await page.evaluate(el => el.textContent,size);
+        
              //Scraping Product Color
-              let colors= await page.$('.product-input-label');
+              let colors= await page.$('#main > article > div.product-detail-view__content > div > div.product-detail-view__side-bar > div.product-detail-info > p');
               let Color= await page.evaluate(el => el.textContent,colors);
-              const Imagen1= await page.$eval(".module.product-description.sticky-wrapper .product-detail-main-image-container img",img => img.src);
-              const Imagen2= await page.$eval(".pdp-secondary-image.pdp-image  img",img => img.src);
+              const Imagen1= await page.$eval("#main > article > div.product-detail-view__content > div.product-detail-view__main > div.product-detail-view__main-content > section > ul > li:nth-child(1) > button > div > div > picture > img",img => img.src);
+              const Imagen2= await page.$eval("#main > article > div.product-detail-view__content > div.product-detail-view__main > div.product-detail-view__main-content > section > ul > li:nth-child(2) > button > div > div > picture > img",img => img.src);
+
               console.log(('El titulo es: '+Titulo));
               console.log(('El Precio es: '+Precio));
-              //console.log(('El tamano es: '+Tamano));
               console.log(('El Color es: '+Color));
               console.log(('url imagen es: '+Imagen1));
               console.log(('url imagen es: '+Imagen2));
@@ -429,7 +421,7 @@ app.post('/scrapAdidas', async(req,res)=>{
               
               await browser.close();
               
-                res.render("product-detail.ejs",{
+               res.render("product-detail.ejs",{
                 Titulo:Titulo,
                 Precio:Precio,
                 Color:Color,

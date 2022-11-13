@@ -90,5 +90,8 @@ router.get("/admin-ped", (req, res) => {
 router.get("/stores", (req, res) => {
   res.render("stores.ejs");
 });
+router.get("/admin", (req, res) => {
+  res.render("dashboard.ejs");
+});
 
 module.exports = router;

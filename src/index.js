@@ -64,18 +64,19 @@ app.post('/regi', async (req,res)=>{
 
   const data= req.body;
   
-  const username= data.user;
-  const password= data.pass;
+  const user= data.username;
+  const pass= data.password;
   const genero= data.gen;
-  const idCliente= data.idCl;
-  const email= data.ema;
+  const direccion= data.direc;
+  const correo= data.ema;
   const numero= data.num;
-  let numr= randomInt(100);
-  
-  let passwordHaash = await bcryptjs.hash(password,8);
+  const idUser=2;
+  const nombre='mario gonzalez';
+
+  let passwordHaash = await bcryptjs.hash(pass,8);
   const passw=passwordHaash;
   
- connect.query('INSERT INTO usuario SET ?', {idUsuario:numr,username:username, password:passw, genero:genero, idCliente:idCliente, email:email, numero:numero}, async(error,results)=>{
+ connect.query('INSERT INTO usuario SET ?', {idUser:idUser,nombre:nombre,user:user, pass:passw,correo:correo, direccion:direccion,  numero:numero, genero:genero}, async(error,results)=>{
   if(error){
     res.send(error);
   }else{
@@ -90,18 +91,18 @@ app.post('/auth', async(req,res)=>{
 
   const data= req.body;
   
-  const username= data.user;
-  const password= data.pass;
+  const user= data.username;
+  const pass= data.password;
 
-  let passwordHaash = await bcryptjs.hash(password,8);
+  let passwordHaash = await bcryptjs.hash(pass,8);
   const passw=passwordHaash;
 
-  if(username && password){
-    connection.query('SELECT * FROM usuario WHERE username= ?', [username], async (error,Result)=>{
-      if(Result.length == 0 || !(await bcryptjs.compare(password, Result[0].password))){
+  if(user && pass){
+    connection.query('SELECT * FROM usuario WHERE user= ?', [user], async (error,Result)=>{
+      if(Result.length == 0 || !(await bcryptjs.compare(pass, Result[0].pass))){
         res.send('USUARIO Y/O PASSWORD INCORRECTAS');
       }else{
-        res.send('LOGIN CORRECTO')
+        res.render("dashboard.ejs");
       }
     })
   }
@@ -148,7 +149,7 @@ app.post('/scrapHm', async(req,res)=>{
     console.log(('url imagen es: '+Imagen1));
     console.log(('url imagen es: '+Imagen2));
 
-    
+    const Meesagge="Todos los derechos de los productos expuestos quedan reservados a nombre de la tienda internacional @H&M Hennes & Mauritz AB"
     
     await browser.close();
     
@@ -157,7 +158,8 @@ app.post('/scrapHm', async(req,res)=>{
       Precio:Precio,
       Color:Color,
       Imagen1:Imagen1,
-      Imagen2:Imagen2
+      Imagen2:Imagen2,
+      Meesagge:Meesagge
     });
   
 })();
@@ -411,13 +413,13 @@ app.post('/scrapAdidas', async(req,res)=>{
               const Imagen1= await page.$eval("#main > article > div.product-detail-view__content > div.product-detail-view__main > div.product-detail-view__main-content > section > ul > li:nth-child(1) > button > div > div > picture > img",img => img.src);
               const Imagen2= await page.$eval("#main > article > div.product-detail-view__content > div.product-detail-view__main > div.product-detail-view__main-content > section > ul > li:nth-child(2) > button > div > div > picture > img",img => img.src);
 
-              console.log(('El titulo es: '+Titulo));
-              console.log(('El Precio es: '+Precio));
-              console.log(('El Color es: '+Color));
-              console.log(('url imagen es: '+Imagen1));
-              console.log(('url imagen es: '+Imagen2));
+              //console.log(('El titulo es: '+Titulo));
+              //console.log(('El Precio es: '+Precio));
+              //console.log(('El Color es: '+Color));
+              //console.log(('url imagen es: '+Imagen1));
+              //console.log(('url imagen es: '+Imagen2));
           
-              
+              const Meesagge="Todos los derechos de los productos expuestos quedan reservados a nombre de la tienda internacional @Zara"
               
               await browser.close();
               
@@ -426,7 +428,8 @@ app.post('/scrapAdidas', async(req,res)=>{
                 Precio:Precio,
                 Color:Color,
                 Imagen1:Imagen1,
-                Imagen2:Imagen2
+                Imagen2:Imagen2,
+                Meesagge:Meesagge
               });
             
           })();

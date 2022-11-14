@@ -94,4 +94,11 @@ router.get("/admin", (req, res) => {
   res.render("dashboard.ejs");
 });
 
+router.get("/pedidos", (req, res) => {
+  res.render("orders.ejs");
+});
+router.get("/usuarios", (req, res) => {
+  res.render("admin-users.ejs");
+});
+
 module.exports = router;

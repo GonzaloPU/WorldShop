@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/perfil.css">
+
+
+    <title>Perfil</title>
+
+</head>
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="/images/logo/sw-brown.png">
+                    <h2>Shopping <span> World </span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-symbols-sharp">
+                        close
+                        </span>
+                </div>
+            </div>
+                <div class="sidebar">
+                    <a href="/profile" class="active">
+                        <span class="material-symbols-sharp">
+                            group
+                            </span>
+                            <h3>Perfil</h3>
+                    </a>
+                    <a href="/userped">
+                        <span class="material-symbols-sharp">
+                            list_alt
+                            </span>
+                            <h3>Pedidos</h3>
+                    </a>                
+                    <a href="#">
+                        <span class="material-symbols-sharp">
+                            logout
+                            </span>
+                            <h3>Salir</h3>
+                    </a>
+                </div>
+           
+        </aside>
+        <!--END OF ASIDE SIDEBAR-->
+
+        <main>
+        
+          <form class="form" role="form" autocomplete="off" style="width: 50%"> 
+            <h2>Perfil</h2>
+            <div class="form-group row">
+              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Nombre</label>
+              <input type="text" readonly class="form-control-plaintext" id="nombre" style="width: 60%" value="Carlos">
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Apellido</label> 
+              <input type="text" readonly class="form-control-plaintext" id="apellido" style="width: 60%" value="Torres">
+
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Email</label>
+              <input type="text" readonly class="form-control-plaintext" id="email" style="width: 60%" value="c.torres@gmail.com">
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Dirección</label>
+              <input type="text" readonly class="form-control-plaintext" id="direccion" style="width: 60%" value="Gran Av. José Miguel Carrera 1020">             
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Fecha de nacimiento</label>
+              <input type="text" readonly class="form-control-plaintext" id="fecha" style="width: 60%" value="10/2/97">
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Genero</label>
+              <input type="text" readonly class="form-control-plaintext" id="Genero" style="width: 60%" value="Masculino">
+            </div>
+        </div>
+        </form>
+
+
+        
+        </main>
+        <!--end of main-->
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-symbols-sharp">
+                        menu
+                        </span>
+                </button>
+                <div class="theme-toggler">
+                    
+                    <span class="material-symbols-sharp active">light_mode</span>
+                    <span class="material-symbols-sharp">dark_mode</span>
+                    
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hola, <b>Marcos</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="#" >
+                    </div>
+                </div>
+            </div>
+            <!--end of the top-->
+           
+
+        </div>
+    </div>
+
+    <script src="/js/dashboard-admin.js"></script>
+</body>
+
+</html>

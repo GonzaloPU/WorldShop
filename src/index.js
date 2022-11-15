@@ -135,8 +135,8 @@ app.post('/scrapHm', async(req,res)=>{
     let Precio= await page.evaluate(el => el.textContent,price);
     //Scraping Product Size
     //let size= await page.$('#picker-1 .picker-list [data-code]');
-    //var Tamano = await page.$eval("select.option active", selectedValue=> selectedValue.value)
-    //let Tamano= await page.evaluate(el => el.textContent,size);
+    let size = await page.$('#picker-1 > button');
+    let Tamano= await page.evaluate(el => el.textContent,size);
    //Scraping Product Color
     let colors= await page.$('.product-input-label');
     let Color= await page.evaluate(el => el.textContent,colors);
@@ -144,7 +144,7 @@ app.post('/scrapHm', async(req,res)=>{
     const Imagen2= await page.$eval(".pdp-secondary-image.pdp-image  img",img => img.src);
     console.log(('El titulo es: '+Titulo));
     console.log(('El Precio es: '+Precio));
-    //console.log(('El tamano es: '+Tamano));
+    console.log(('El tamano es: '+Tamano));
     console.log(('El Color es: '+Color));
     console.log(('url imagen es: '+Imagen1));
     console.log(('url imagen es: '+Imagen2));

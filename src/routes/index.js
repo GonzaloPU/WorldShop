@@ -101,4 +101,7 @@ router.get("/usuarios", (req, res) => {
   res.render("admin-users.ejs");
 });
 
+router.get("/perfil", (req, res) => {
+  res.render("profile.ejs");
+});
 module.exports = router;

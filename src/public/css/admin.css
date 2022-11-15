@@ -350,7 +350,7 @@ main .recent-order h2{
 
 main .recent-order table{
     background: var(--color-white);
-    width: 128em;
+    width: 80em;
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
     text-align: center;
@@ -363,7 +363,8 @@ main .recent-order table:hover{
 }
 
 main table tbody td{
-    height: 17em;
+    padding: 0 15px;
+    height: 13em;
     border-bottom: 1px solid var(--color-light);
     color: var(--color-dark-variant);
 }
@@ -389,6 +390,7 @@ main .recent-order a{
     display: flex;
     justify-content: end;
     gap: 2rem;
+    margin-right: 20em;
     
 }
 

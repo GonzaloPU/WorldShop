@@ -15,6 +15,10 @@ router.get("/index", (req, res) => {
   res.render("index.ejs");
 });
 
+router.get("/carro_login", (req, res) => {
+  res.render("carro_login.ejs");
+});
+
 router.get("/about", (req, res) => {
   res.render("about.ejs");
 });

@@ -8,7 +8,6 @@
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="css/estilocarro.css" media="screen" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" rel="stylesheet" />
     <!--Script-->
@@ -36,26 +35,26 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class='pname'>Relaxed Fit Cotton T-shirt</td>
+                        <td class='pname'>Regular Fit Crew-neck T-shirt</td>
                         <td class='talla'>M</td>
-                        <td class='color'>Black/Smiley®</td>
+                        <td class='color'>Gray melange</td>
                         <td class='pqty'> 1 </td>
                         <td class='tienda'>H&M</td>
-                        <td class='pprice'>$19.99</td>
+                        <td class='pprice'>$6.229</td>
                     </tr>
                     </tr>
                 </tbody>
             </table>
             <div id="pricing">
                 <p id="sub-total">
-                    <strong>Sub Total</strong>:<span id="stotal">$19.99</span>
+                    <strong>Sub Total</strong>:<span id="stotal">$6.229</span>
                 </p>
                 <p id="shipping">
                     <strong>Envio</strong>:<span id="sshipping">$0.00</span>
                 </p>
 
                 <p id="sub-total">
-                    <strong>Total</strong>:<span id="stotal">$19.99</span>
+                    <strong>Total</strong>:<span id="stotal">$6.229</span>
                 </p>
             </div>
             <ul id="shopping-cart-actions">
@@ -66,7 +65,7 @@
 
 
 
-            <form action="/add" method="POST">
+            <form action="orden" method="GET">
                 <div class="form first">
                     <div class="details personal">
                         <h2>Detalles</h2>
@@ -111,8 +110,7 @@
                                     required />
                             </div>
                         </fieldset>
-                        <a href="orden" style="text-align: center; margin: auto; display: grid;" class="btn">Continuar
-                        </a>
+                        <input type="submit"  value="Continuar" class="btn-block btn-blue" />
                     </div>
                 </div>
             </form>

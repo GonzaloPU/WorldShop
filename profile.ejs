@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
-    <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/perfil.css">
 
 
@@ -54,35 +55,92 @@
 
         <main>
         
-          <form class="form" role="form" autocomplete="off" style="width: 50%"> 
-            <h2>Perfil</h2>
-            <div class="form-group row">
-              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Nombre</label>
-              <input type="text" readonly class="form-control-plaintext" id="nombre" style="width: 60%" value="Carlos">
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Apellido</label> 
-              <input type="text" readonly class="form-control-plaintext" id="apellido" style="width: 60%" value="Torres">
+            <div class="container emp-profile">
+                <form method="post">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="profile-img">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                                <div class="file btn btn-lg btn-primary">
+                                    Cambiar foto
+                                    <input type="file" name="file"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="profile-head">
+                                        <h1>
+                                            Marco Jose
+                                        </h1>
+                                        
 
+                            </div>
+                        </div>
+                        <div class="col-md-6" >
+                            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Editar perfil"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-md-10">
+                            <div class="tab-content profile-tab" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Usuario</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>marco</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Nombre</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>Marco Jose</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Email</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>marco01@gmail.com</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Dirección</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>camino los ninos</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Número</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>569414567</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Género</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>Hombre</p>
+                                                </div>
+                                            </div>
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </form>           
             </div>
-            <div class="form-group row">
-              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Email</label>
-              <input type="text" readonly class="form-control-plaintext" id="email" style="width: 60%" value="c.torres@gmail.com">
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Dirección</label>
-              <input type="text" readonly class="form-control-plaintext" id="direccion" style="width: 60%" value="Gran Av. José Miguel Carrera 1020">             
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Fecha de nacimiento</label>
-              <input type="text" readonly class="form-control-plaintext" id="fecha" style="width: 60%" value="10/2/97">
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Genero</label>
-              <input type="text" readonly class="form-control-plaintext" id="Genero" style="width: 60%" value="Masculino">
-            </div>
-        </div>
-        </form>
 
 
         

@@ -80,7 +80,7 @@ ul li {
 	list-style: none;
 	
 }
-select,input,textarea{box-shadow:none;outline:0!important;}
+select,input,textarea{box-shadow:none;outline:0;}
 
 
 html,body{
@@ -1382,7 +1382,7 @@ a:active.learn-btn{
 	border: 1px solid #f9faff;
     border-radius: 0px;
     box-shadow: none;
-	outline:0!important;
+	outline:0;
     background:#f9faff;
     color: #888;
 	resize: none;
@@ -1413,7 +1413,7 @@ a:active.learn-btn{
 .contact-form .single-contact-btn button.contact-btn ,
 .contact-form .single-contact-btn button.contact-btn:focus {
     margin-top:0px;
-    outline: 0 !important;
+    outline: 0 ;
     border:0;
     color: #fff;
     letter-spacing: 2.5px;
@@ -1649,7 +1649,7 @@ a:active.learn-btn{
 	background:#614533;
 	display: block;
     padding: 32px 32px 33px;
-	outline:0!important;
+	outline:0;
 	box-shadow:none;
 	border:0;
 	border-radius: 0;

@@ -15,11 +15,11 @@ a:hover {
     text-decoration: none;
 }
 
-.bg-primary { background-color: var(--primary) !important; }
+.bg-primary { background-color: var(--primary) ; }
 
-.bg-light { background-color: var(--light) !important; }
+.bg-light { background-color: var(--light) ; }
 
-.bg-grey { background-color: var(--grey) !important; }
+.bg-grey { background-color: var(--grey) ; }
 
 .bg-mix { background: linear-gradient(180deg, var(--light) 50%, var(--grey) 0); }
 

@@ -100,7 +100,7 @@
 	.pricing-box {max-width: 350px;margin: 0 auto;margin-bottom: 30px;}
 	.team-box-inner {max-width: 270px;}
 	.single-news-box {margin: 0 auto;max-width: 350px;margin-bottom: 30px;min-height: 508px;}
-	.single-contact-btn.pull-right {float: left!important;}
+	.single-contact-btn.pull-right {float: left;}
 	.single-new-project a.slide-btn{margin-top:30px;}
 	.border-bottom {max-width: 250px;}
 
@@ -118,7 +118,7 @@
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {width: 105%;}
 }/*max-width:680px*/
 @media screen and (max-width: 667px){
-	.header-right.pull-right {float: left!important;margin-top: 10px;}
+	.header-right.pull-right {float: left;margin-top: 10px;}
 }/*max-width:667px*/
 
 @media screen and (max-width: 640px){
@@ -140,7 +140,7 @@
 @media screen and (max-width: 540px){
 	.navbar-default .navbar-collapse, .navbar-default .navbar-form {width: 107%;}
 	.carousel-control.right {left:20%;}
-	.foot-menu.pull-right {float: left!important; margin-top: 20px;}
+	.foot-menu.pull-right {float: left; margin-top: 20px;}
 	
 }/*max-width:540px*/
 @media screen and (max-width: 480px){
@@ -160,7 +160,7 @@
 	.main-timeline:before {left: 31%;}
 
 
-	.bl-single-tag {float: left!important;margin-top: 10px;}
+	.bl-single-tag {float: left;margin-top: 10px;}
 	.bl-single-contact-box {padding: 22px 0 80px;}
 }/*max-width:400px*/
 

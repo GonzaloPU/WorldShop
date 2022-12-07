@@ -63,10 +63,10 @@
                 <h2>Usuarios</h2>
                 <table>
                     <thead>
+                        
                         <tr>
-                            <th>#ID</th>
+                            <th>#RUT</th>
                             <th>Nombre</th>
-                            <th>Apellido</th>
                             <th>Usuario</th>
                             <th>Correo</th>
                             <th>Dirección</th>
@@ -77,35 +77,17 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Julia</td>
-                            <td>Esmeralda</td>
-                            <td>julia</td>
-                            <td>julia@gmail.com</td>
-                            <td>santa ses 0122, Lo espejo</td>
-                            <td>+56954142</td>
-                            <td>1</td>
+                            <% if (data) { %>
+                                <% data.forEach(function(item) {%>
+                            <td><%= item.idUser%></td>
+                            <td><%= item.Nombre%></td>
+                            <td><%= item.user%></td>
+                            <td><%= item.correo%></td>
+                            <td><%= item.direccion%></td>
+                            <td><%= item.numero%></td>
+                            <td><%= item.Nombre%></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Maria Rodriguez</td>
-                            <td>Rodriguez</td>
-                            <td>maria</td>
-                            <td>maria@gmail.com</td>
-                            <td>santa ses 0122, Lo espejo</td>
-                            <td>+56966942</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Jose </td>
-                            <td>Morales</td>
-                            <td>jose</td>
-                            <td>jose@gmail.com</td>
-                            <td>caminito del señor 0112, La Florida</td>
-                            <td>+56971151</td>
-                            <td>1</td>
-                        </tr>
+                        <% })}%>
                         
                     </tbody>
                 </table>
@@ -129,7 +111,7 @@
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hola, <b>Marcos</b></p>
+                        <p>Hola, <b></b></p>
                         <small class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo">

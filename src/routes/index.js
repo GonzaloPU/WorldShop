@@ -4,6 +4,8 @@ const bcryptjs= require('bcryptjs');
 const connection = require("../../database/database");
 const { results } = require("express-validator");
 const app= express();
+const aunthentic = require('../../controllers/aunthenticController')
+
 
 router.use(express.static(__dirname + "../public"));
 
@@ -41,7 +43,7 @@ router.get("/team", (req, res) => {
   res.render("team.ejs");
 });
 router.get("/login", (req, res) => {
-  res.render("login.ejs");
+  res.render("login.ejs", {alert:false});
 });
 router.get("/registration", (req, res) => {
   res.render("registration.ejs");
@@ -94,18 +96,27 @@ router.get("/admin-ped", (req, res) => {
 router.get("/stores", (req, res) => {
   res.render("stores.ejs");
 });
-router.get("/admin", (req, res) => {
+router.get("/admin",aunthentic.listaPedidos,
+(req, res) => {
   res.render("dashboard.ejs");
 });
 
-router.get("/pedidos", (req, res) => {
+router.get("/pedidos", aunthentic.listaPedido,  (req, res) => {
   res.render("orders.ejs");
 });
-router.get("/usuarios", (req, res) => {
+router.get("/usuarios", aunthentic.listaUsuario, (req, res) => {
   res.render("admin-users.ejs");
 });
 
 router.get("/perfil", (req, res) => {
   res.render("profile.ejs");
 });
+
+
+
+//direcciones
+router.post('/regi', aunthentic.regi)
+router.post('/login', aunthentic.login)
+router.get('/logout', aunthentic.logout)
+
 module.exports = router;

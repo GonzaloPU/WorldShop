@@ -67,7 +67,10 @@
                         <div class="middle">
                             <div class="left">
                                 <h3>Ventas totales</h3>
-                                <h1>$521.787</h1>
+                                <% if (data) { %>
+                                    <% data.forEach(function(item) {%>
+                                <h1>$<%= item.total%></h1>
+                                <%})}%>
                             </div>
                             <div class="progress">
                                 <svg>
@@ -88,7 +91,10 @@
                         <div class="middle">
                             <div class="left">
                                 <h3>Pedidos Activos</h3>
-                                <h1>3</h1>
+                                <% if (data) { %>
+                                    <% data.forEach(function(item) {%>
+                                <h1><%= item.activos%></h1>
+                                <%})}%>
                             </div>
                             <div class="progress">
                                 <svg>
@@ -109,7 +115,10 @@
                         <div class="middle">
                             <div class="left">
                                 <h3>Usuarios registrados</h3>
-                                <h1>10</h1>
+                                <% if (data) { %>
+                                    <% data.forEach(function(item) {%>
+                                <h1><%= item.usuarios%></h1>
+                                <%})}%>
                             </div>
                             <div class="progress">
                                 <svg>
@@ -138,27 +147,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        
                         <tr>
-                            <td>1</td>
-                            <td>Julia Esmeralda</td>
+                            <% if (data) { %>
+                                <% data.forEach(function(item) {%>
+                            <td><%= item.Nombre%></td>
+                            <td><%= item.Nombre%></td>
                             <td>Realizado</td>
-                            <td class="warning">Pendiente</td>
-                            <td class="primary"><a href="#">Detalle </a></td>
+                            <td><%= item.Nombre%></td>
+                            <td class="primary"><a href="/pedidos">Detalle </a></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Maria Rodriguez</td>
-                            <td>Realizado</td>
-                            <td class="warning">Pendiente</td>
-                            <td class="primary"><a href="#">Detalle </a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Jose Morales</td>
-                            <td>Realizado</td>
-                            <td class="warning">Pendiente</td>
-                            <td class="primary"><a href="#">Detalle </a></td>
-                        </tr>
+                        <% })}%>
+                      
                     </tbody>
                 </table>
                 <a href="/pedidos"> Mostrar Todo</a>
@@ -181,7 +181,7 @@
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hola, <b>mario</b></p>
+                        <p>Hola, <b></b></p>
                         <small class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo">

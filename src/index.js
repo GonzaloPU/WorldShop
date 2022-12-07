@@ -3,14 +3,20 @@ const morgan = require("morgan");
 const path = require("path");
 const app = express();
 const puppeteer = require('puppeteer');
+const jwt = require('jsonwebtoken');
+const {promisify} = require('util')
+
+
+
 
 
 // Settings
 app.set("port", 8080);
 
 app.set("views", path.join(__dirname, "views"));
-app.engine("html", require("ejs").renderFile);
+
 app.set("view engine", "ejs");
+app.engine("html", require("ejs").renderFile);
 
 // middlewares
 app.use(morgan("dev"));
@@ -39,13 +45,10 @@ const { randomInt } = require("crypto");
 const { Result } = require("express-validator");
 const { cp } = require("fs");
 const { parse } = require("path");
-app.use(
-  session({
-    secret: "secret",
-    resave: true,
-    saveUninitialized: true,
-  })
-);
+const { send } = require("process");
+const { Console } = require("console");
+const cookieParser = require("cookie-parser");
+
 
 // routes
 app.use(require("./routes/index"));
@@ -53,61 +56,22 @@ app.use("/links", require("./routes/links"));
 
 // Statics Files
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cookieParser());
 
 //server listening
 app.listen(app.get("port"), () => {
   console.log("Server on port", app.get("port"));
 });
 
-//registration
-app.post('/regi', async (req,res)=>{
-
-  const data= req.body;
-  
-  const user= data.username;
-  const pass= data.password;
-  const genero= data.gen;
-  const direccion= data.direc;
-  const correo= data.ema;
-  const numero= data.num;
-  const idUser=2;
-  const nombre='mario gonzalez';
-
-  let passwordHaash = await bcryptjs.hash(pass,8);
-  const passw=passwordHaash;
-  
- connect.query('INSERT INTO usuario SET ?', {idUser:idUser,nombre:nombre,user:user, pass:passw,correo:correo, direccion:direccion,  numero:numero, genero:genero}, async(error,results)=>{
-  if(error){
-    res.send(error);
-  }else{
-    res.render("login.ejs");
-   }
+//lista pedidos
+app.get('/pedidos', async(req, res)=>{
+  const pedidos= await connection.query('SELECT * FROM pedidos');
+  console.log(pedidos);
 })
-  
-});
 
-//Login
-app.post('/auth', async(req,res)=>{
 
-  const data= req.body;
-  
-  const user= data.username;
-  const pass= data.password;
 
-  let passwordHaash = await bcryptjs.hash(pass,8);
-  const passw=passwordHaash;
 
-  if(user && pass){
-    connection.query('SELECT * FROM usuario WHERE user= ?', [user], async (error,Result)=>{
-      if(Result.length == 0 || !(await bcryptjs.compare(pass, Result[0].pass))){
-        res.send('USUARIO Y/O PASSWORD INCORRECTAS');
-      }else{
-        res.render("dashboard.ejs");
-      }
-    })
-  }
-
-})
 
 //Scraping Web
 //Inicio Scrapping H&M
@@ -142,12 +106,15 @@ app.post('/scrapHm', async(req,res)=>{
     let Color= await page.evaluate(el => el.textContent,colors);
     const Imagen1= await page.$eval(".module.product-description.sticky-wrapper .product-detail-main-image-container img",img => img.src);
     const Imagen2= await page.$eval(".pdp-secondary-image.pdp-image  img",img => img.src);
-    console.log(('El titulo es: '+Titulo));
-    console.log(('El Precio es: '+Precio));
-    console.log(('El tamano es: '+Tamano));
-    console.log(('El Color es: '+Color));
-    console.log(('url imagen es: '+Imagen1));
-    console.log(('url imagen es: '+Imagen2));
+
+
+
+    const Titl = console.log(('El titulo es: '+Titulo));
+    const Prc= console.log(('El Precio es: '+Precio));
+    const Tamn=console.log(('El tamano es: '+Tamano));
+    const Colr=console.log(('El Color es: '+Color));
+    const im1=console.log(('url imagen es: '+Imagen1));
+    const img2=console.log(('url imagen es: '+Imagen2));
 
     const Meesagge="Todos los derechos de los productos expuestos quedan reservados a nombre de la tienda internacional @H&M Hennes & Mauritz AB"
     
@@ -444,16 +411,19 @@ app.post('/sp', async(req,res)=>{
   
 
   
-    const data= req.body;
+  const data= req.body;
 
     //Capturamos los datos
+    
+    const Titulo= String(data.titulo);
+    const Color= String(data.color);
+    const Talla= String(data.talla);
+    const Precio= String(data.precio);
+    const Cantidad = String(data.cantidad);
+    const nombre= localStorage.getItem("name");
 
-    const Titulo= data.titulo;
-    const Color= data.color;
-    const Talla= data.talla;
-    const Precio= data.precio;
-
-    console.log(Color);
+  console.log(Titl);
+    
   
    /* res.render("shoppingcart.ejs",{
       Title:Titulo,
@@ -463,3 +433,5 @@ app.post('/sp', async(req,res)=>{
     });
 */
   })
+
+

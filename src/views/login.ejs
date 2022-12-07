@@ -22,7 +22,7 @@
       <div id="formLogin">
         <h1>Bienvenido</h1>
 
-        <form action="auth" method="POST">
+        <form action="/login" method="POST">
         <div class="inputContainer">
           <input id="username" name="username" type="text" class="inputLogin" placeholder=" " />
           <label  class="labelLogin">Usuario</label>
@@ -48,5 +48,21 @@
     </div>
 
     <script src="/js/loader.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <% if(alert) { %>
+    <script>
+      Swal.fire({
+        position:'top-end',
+        title: '<%= alertTitle %>',
+        text:'<%= alertMessage %>',
+        icon:'<%= alertIcon %>',
+        showConfirmButton: <%= showConfirmButton %>,
+        timer: <%= timer %>
+      }).then(()=>{
+        window.location = '/<%= ruta %>'
+      })
+    </script>
+  <% } %>
   </body>
 </html>

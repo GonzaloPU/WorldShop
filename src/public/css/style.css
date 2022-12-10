@@ -212,12 +212,12 @@ html,body{
 .wrapper-sticky{
 	position: relative;
 	display: inline-block;
-	background: #aa4f05;
+	background: #654C4F;
 }
 
 /* sticky */
 .sticky{
-	background: #aa4f05;
+	background: #654C4F;
 	padding: 10px 0px 0px;
 	height:80px;
 	color: #fff;
@@ -1193,7 +1193,7 @@ a:active.learn-btn{
 		12. Client
 --------------------------------------*/
 .clients{
-	background: #a76b34;
+	background: #FFD9E2;
 	padding: 53px 0 0px;
 }
 .clients-area {
@@ -1338,7 +1338,7 @@ a:active.learn-btn{
 	position: relative;
 }
 .contact:before{
-	background:rgba(212, 140, 32, 0.85);
+	background:#B26E63	;
 	position:absolute;
 	left:0;
 	top:0;
@@ -1397,10 +1397,10 @@ a:active.learn-btn{
 	display:flex;
 	align-items:center;
 	justify-content:center;
-	background: #af6015;
+	background: #B26E63;
 	height:50px;
 	width: 195px;
-	border:1px solid #a35a15;
+	border:1px solid #B26E63;
 	text-transform:uppercase;
 	font-family: 'Poppins', sans-serif;
 	margin-top: 3px;
@@ -1544,7 +1544,7 @@ a:active.learn-btn{
 --------------------------------------*/
 .hm-footer{
     padding-bottom:68px;
-    background: #523b1d;
+    background: #654C4F;
 }
 .hm-footer-details {
     margin-top: 120px;
@@ -1646,7 +1646,7 @@ a:active.learn-btn{
 	margin-top:35px;
 }
 .foot-email-box .form-control {
-	background:#614533;
+	background:#94767a;
 	display: block;
     padding: 32px 32px 33px;
 	outline:0;
@@ -1655,13 +1655,13 @@ a:active.learn-btn{
 	border-radius: 0;
 }
 .foot-email-box input[placeholder="Email Address"] {
-	color: #8b8b8b;
+	color: #613d41;
 	font-size: 16px;
 }
 .foot-email-subscribe button{
     width:65px;
     height:65px;
-    background: #bb8c60;
+    background: #613d41;
 	font-size:14px;
     color: #fff;
     text-transform: uppercase;
@@ -1708,11 +1708,11 @@ a:active.learn-btn{
 		17. Footer- copyright
 --------------------------------------*/
 .footer-copyright {
-	background:#3b2710;
+	background:#654C4F;
 	padding: 30px 0 35px;
 }
 .foot-copyright{
-	color:#8b8b8b;
+	color:#000;
 	font-size:16px;
 	font-family: 'Poppins', sans-serif;
 }
@@ -1724,7 +1724,7 @@ a:active.learn-btn{
 }
 
 .foot-menu li a{
-	color:#8790af;
+	color:#000;
     background-color: transparent;
     font-family: 'Poppins', sans-serif;
 	display: inline-block;
@@ -2310,8 +2310,8 @@ a:active.learn-btn{
     cursor: pointer;
     z-index:15;
     color: #fff;
-    background:#7370d8;
-	border:1px solid #7370d8;
+    background:#B26E63;
+	border:1px solid #B26E63;
 	border-radius:5px;
 	-webkit-transition: .5s; 
 	-moz-transition:.5s; 
@@ -2321,9 +2321,9 @@ a:active.learn-btn{
 	z-index: 2;
 }
 #scroll-Top  .return-to-top:hover {
-    background:#7370d8;
+    background:#B26E63;
     color: #fff;
-	border:1px solid #7370d8;
+	border:1px solid #B26E63;
 	border-radius:50%;
 }
 

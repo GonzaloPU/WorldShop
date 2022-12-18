@@ -27,7 +27,7 @@
                 </div>
             </div>
                 <div class="sidebar">
-                    <a href="/profile" >
+                    <a href="/perfil" >
                         <span class="material-symbols-sharp">
                             group
                             </span>
@@ -39,7 +39,7 @@
                             </span>
                             <h3>Pedidos</h3>
                     </a>                
-                    <a href="#">
+                    <a href="/logout">
                         <span class="material-symbols-sharp">
                             logout
                             </span>
@@ -58,107 +58,40 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>#ID</th>
                             <th>Cliente</th>
-                            <th>Contacto</th>
-                            <th>Dirección</th>
+                            <th>Cantidad</th>
                             <th>Productos</th>
                             <th>Talla</th>
                             <th>Color</th>
+                            <th>Dirección</th>
+                            <th>Email</th>
+                            <th>Numero</th>
                             <th>Monto</th>
                             <th>Link</th>
                             
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>Maria Rodriguez</td>
-                            <td></td>
-                            <td></td>
-                            <td><ul>
-                                <li>Cardiga Mearus (14)</li>
-                                <li>Botas c (11)</li>
-                                <li>Jamper vsasdad (12)</li>
-                            </ul></td>
-                            <td>M</td>
-                            <td>Grey Montan</td>
-                            <td class="warning">$200.000</td>
-                            <td class="primary"><a href="#">www.asda.com</a></td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Maria Rodriguez</td>
-                          <td></td>
-                          <td></td>
-                          <td><ul>
-                              <li>Cardiga Mearus (14)</li>
-                              <li>Botas c (11)</li>
-                              <li>Jamper vsasdad (12)</li>
-                          </ul></td>
-                          <td>M</td>
-                          <td>Grey Montan</td>
-                          <td class="warning">$200.000</td>
-                          <td class="primary"><a href="#">www.asda.com</a></td>
-                      </tr>                        <tr>
-                        <td>2</td>
-                        <td>Maria Rodriguez</td>
-                        <td></td>
-                        <td></td>
-                        <td><ul>
-                            <li>Cardiga Mearus (14)</li>
-                            <li>Botas c (11)</li>
-                            <li>Jamper vsasdad (12)</li>
-                        </ul></td>
-                        <td>M</td>
-                        <td>Grey Montan</td>
-                        <td class="warning">$200.000</td>
-                        <td class="primary"><a href="#">www.asda.com</a></td>
-                    </tr>                        <tr>
-                      <td>2</td>
-                      <td>Maria Rodriguez</td>
-                      <td></td>
-                      <td></td>
-                      <td><ul>
-                          <li>Cardiga Mearus (14)</li>
-                          <li>Botas c (11)</li>
-                          <li>Jamper vsasdad (12)</li>
-                      </ul></td>
-                      <td>M</td>
-                      <td>Grey Montan</td>
-                      <td class="warning">$200.000</td>
-                      <td class="primary"><a href="#">www.asda.com</a></td>
-                  </tr>                        <tr>
-                    <td>2</td>
-                    <td>Maria Rodriguez</td>
-                    <td></td>
-                    <td></td>
-                    <td><ul>
-                        <li>Cardiga Mearus (14)</li>
-                        <li>Botas c (11)</li>
-                        <li>Jamper vsasdad (12)</li>
-                    </ul></td>
-                    <td>M</td>
-                    <td>Grey Montan</td>
-                    <td class="warning">$200.000</td>
-                    <td class="primary"><a href="#">www.asda.com</a></td>
-                </tr>                        <tr>
-                  <td>2</td>
-                  <td>Maria Rodriguez</td>
-                  <td></td>
-                  <td></td>
-                  <td><ul>
-                      <li>Cardiga Mearus (14)</li>
-                      <li>Botas c (11)</li>
-                      <li>Jamper vsasdad (12)</li>
-                  </ul></td>
-                  <td>M</td>
-                  <td>Grey Montan</td>
-                  <td class="warning">$200.000</td>
-                  <td class="primary"><a href="#">www.asda.com</a></td>
-              </tr>
+                        <% if (data) { %>
+                            <% data.forEach(function(item) {%>
+                           
+                                <tr>
+                                    <td><%= item.Nombre%></td>
+                                    <td><%= item.cantidad%></td>
+                                    <td><%= item.nombreProducto%></td>
+                                    <td><%= item.tallaProducto%></td>
+                                    <td><%= item.colorProducto%></td>
+                                    <td><%= item.direccion%></td>
+                                    <td><%= item.correo%></td>
+                                    <td><%= item.numero%></td>
+                                    <td><%= item.precioU%></td>
+                                    <td><%= item.link%></td>
+
+                                </tr>
+                                <% })}%>
                     </tbody>
                 </table>
+              
                 
             </div>
 
@@ -179,11 +112,10 @@
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hola, <b>Marcos</b></p>
-                        <small class="text-muted">Admin</small>
+                        <p>Hola, <b>marco</b></p>
                     </div>
                     <div class="profile-photo">
-                        <img src="#" >
+                        <img src="https://mejorconsalud.as.com/wp-content/uploads/2017/11/hombre-sonriendo-gafas.jpg" >
                     </div>
                 </div>
             </div>

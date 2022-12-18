@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
-    <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/perfil.css">
 
 
@@ -29,7 +30,7 @@
                 </div>
             </div>
                 <div class="sidebar">
-                    <a href="/profile" class="active">
+                    <a href="/perfil" class="active">
                         <span class="material-symbols-sharp">
                             group
                             </span>
@@ -41,7 +42,7 @@
                             </span>
                             <h3>Pedidos</h3>
                     </a>                
-                    <a href="#">
+                    <a href="/logout">
                         <span class="material-symbols-sharp">
                             logout
                             </span>
@@ -54,35 +55,105 @@
 
         <main>
         
-          <form class="form" role="form" autocomplete="off" style="width: 50%"> 
-            <h2>Perfil</h2>
-            <div class="form-group row">
-              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Nombre</label>
-              <input type="text" readonly class="form-control-plaintext" id="nombre" style="width: 60%" value="Carlos">
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Apellido</label> 
-              <input type="text" readonly class="form-control-plaintext" id="apellido" style="width: 60%" value="Torres">
+            <div class="container emp-profile">
+                <form method="get">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="profile-img">
+                                <img src="https://mejorconsalud.as.com/wp-content/uploads/2017/11/hombre-sonriendo-gafas.jpg" alt=""/>
+                                <div class="file btn btn-lg btn-primary">
+                                    Cambiar foto
+                                    <input type="file" name="file"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="profile-head">
+                                <% if (data) { %>
+                                    <% data.forEach(function(item) {%>
+                                <h1><%= item.Nombre%></h1>
+                                <%})}%>
 
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-md-10">
+                            <div class="tab-content profile-tab" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Usuario</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <% if (data) { %>
+                                                        <% data.forEach(function(item) {%>
+                                                    <p><%= item.user%></p>
+                                                    <%})}%>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Nombre</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <% if (data) { %>
+                                                        <% data.forEach(function(item) {%>
+                                                    <p><%= item.Nombre%></p>
+                                                    <%})}%>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Email</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <% if (data) { %>
+                                                        <% data.forEach(function(item) {%>
+                                                    <p><%= item.correo%></p>
+                                                    <%})}%>                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Dirección</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <% if (data) { %>
+                                                        <% data.forEach(function(item) {%>
+                                                    <p><%= item.direccion%></p>
+                                                    <%})}%>                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Número</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <% if (data) { %>
+                                                        <% data.forEach(function(item) {%>
+                                                    <p><%= item.numero%></p>
+                                                    <%})}%>                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Género</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <% if (data) { %>
+                                                        <% data.forEach(function(item) {%>
+                                                    <p><%= item.genero%></p>
+                                                    <%})}%>                                                </div>
+                                            </div>
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </form>           
             </div>
-            <div class="form-group row">
-              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Email</label>
-              <input type="text" readonly class="form-control-plaintext" id="email" style="width: 60%" value="c.torres@gmail.com">
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Dirección</label>
-              <input type="text" readonly class="form-control-plaintext" id="direccion" style="width: 60%" value="Gran Av. José Miguel Carrera 1020">             
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Fecha de nacimiento</label>
-              <input type="text" readonly class="form-control-plaintext" id="fecha" style="width: 60%" value="10/2/97">
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-9 col-form-label form-control-label" style="width: 30%">Genero</label>
-              <input type="text" readonly class="form-control-plaintext" id="Genero" style="width: 60%" value="Masculino">
-            </div>
-        </div>
-        </form>
 
 
         
@@ -103,11 +174,14 @@
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hola, <b>Marcos</b></p>
-                        <small class="text-muted">Admin</small>
+                        <p>Hola, <% if (data) { %>
+                            <% data.forEach(function(item) {%>
+                        <b><%= item.user%></b>
+                        <%})}%></p>
+                        
                     </div>
                     <div class="profile-photo">
-                        <img src="#" >
+                        <img src="https://mejorconsalud.as.com/wp-content/uploads/2017/11/hombre-sonriendo-gafas.jpg" >
                     </div>
                 </div>
             </div>

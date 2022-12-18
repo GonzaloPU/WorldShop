@@ -63,11 +63,6 @@ app.listen(app.get("port"), () => {
   console.log("Server on port", app.get("port"));
 });
 
-//lista pedidos
-app.get('/pedidos', async(req, res)=>{
-  const pedidos= await connection.query('SELECT * FROM pedidos');
-  console.log(pedidos);
-})
 
 
 
@@ -89,32 +84,37 @@ app.post('/scrapHm', async(req,res)=>{
   await page.goto(urls);
   
 
-  await page.waitForSelector('.ProductName-module--container__3e-gi h1')
+  await page.waitForSelector('#js-product-name > div > h1')
   
     //Scraping Product Title
-    let title= await page.$('.ProductName-module--container__3e-gi h1');
+    let title= await page.$('#js-product-name > div > h1');
     let Titulo= await page.evaluate(el => el.textContent,title);
+
+
     //Scraping Product Price
-    let price= await page.$('.ProductPrice-module--productItemPrice__2i2Hc .Price-module--black-large__2lI2s');
+    let price= await page.$('#product-price > div > span');
     let Precio= await page.evaluate(el => el.textContent,price);
-    //Scraping Product Size
-    //let size= await page.$('#picker-1 .picker-list [data-code]');
-    let size = await page.$('#picker-1 > button');
-    let Tamano= await page.evaluate(el => el.textContent,size);
+
+
+     //Scraping product Size
+              const size = await page.$$('#picker-1 > ul > li .value');
+              let item=[];
+              for (let index = 0; index < size.length; index++ ){
+                const element = size[index];
+                const tamano = await page.evaluate(element => element.textContent,element);
+                
+                item.push(tamano);
+                
+              }
    //Scraping Product Color
-    let colors= await page.$('.product-input-label');
+    let colors= await page.$('#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > div.sub-content.product-detail-info.product-detail-meta.inner.sticky-on-scroll.semi-sticky > div > div.product-colors.miniatures.clearfix.slider-completed.loaded > h3');
     let Color= await page.evaluate(el => el.textContent,colors);
-    const Imagen1= await page.$eval(".module.product-description.sticky-wrapper .product-detail-main-image-container img",img => img.src);
-    const Imagen2= await page.$eval(".pdp-secondary-image.pdp-image  img",img => img.src);
+    const Imagen1= await page.$eval("#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > figure:nth-child(4) > img",img => img.src);
+    const Imagen2= await page.$eval("#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > figure:nth-child(4) > img",img => img.src);
 
 
 
-    const Titl = console.log(('El titulo es: '+Titulo));
-    const Prc= console.log(('El Precio es: '+Precio));
-    const Tamn=console.log(('El tamano es: '+Tamano));
-    const Colr=console.log(('El Color es: '+Color));
-    const im1=console.log(('url imagen es: '+Imagen1));
-    const img2=console.log(('url imagen es: '+Imagen2));
+    
 
     const Meesagge="Todos los derechos de los productos expuestos quedan reservados a nombre de la tienda internacional @H&M Hennes & Mauritz AB"
     
@@ -124,6 +124,7 @@ app.post('/scrapHm', async(req,res)=>{
       Titulo:Titulo,
       Precio:Precio,
       Color:Color,
+      Tamn: item,
       Imagen1:Imagen1,
       Imagen2:Imagen2,
       Meesagge:Meesagge
@@ -360,11 +361,13 @@ app.post('/scrapAdidas', async(req,res)=>{
             const urls= data.url;
           
           
-            const browser = await puppeteer.launch({headless: false});
+            const browser = await puppeteer.launch({headless:false});
             const page = await browser.newPage();
             await page.goto(urls);
-            
-          
+           
+           
+            await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36')
+         
             await page.waitForSelector('.product-detail-view__side-bar')
             
               //Scraping Product Title
@@ -373,10 +376,29 @@ app.post('/scrapAdidas', async(req,res)=>{
               //Scraping Product Price
               let price= await page.$('#main > article > div.product-detail-view__content > div > div.product-detail-view__side-bar > div.product-detail-info > div.product-detail-info__price > div > span > span > span > div > span');
               let Precio= await page.evaluate(el => el.textContent,price);
+
+             
+              //Scraping product Size
+              const size = await page.$$('#main > article > div.product-detail-view__content > div.product-detail-view__main > div.product-detail-view__side-bar > div.product-detail-info > div.size-selector.product-detail-info__size-selector.size-selector--is-open.size-selector--expanded ul [data-qa-action=size-in-stock] span');
+              let item=[];
+              for (let index = 0; index < size.length; index++ ){
+                const element = size[index];
+                const tamano = await page.evaluate(element => element.textContent,element);
+                
+                item.push(tamano);
+                
+              }
+
+              
         
              //Scraping Product Color
-              let colors= await page.$('#main > article > div.product-detail-view__content > div > div.product-detail-view__side-bar > div.product-detail-info > p');
+              let colors= await page.$('#main > article > div > div.product-detail-view__main > div.product-detail-view__side-bar > div.product-detail-info > div.product-detail-color-selector.product-detail-info__color-selector > p');
               let Color= await page.evaluate(el => el.textContent,colors);
+
+            
+
+              
+              //Scraping Product Image
               const Imagen1= await page.$eval("#main > article > div.product-detail-view__content > div.product-detail-view__main > div.product-detail-view__main-content > section > ul > li:nth-child(1) > button > div > div > picture > img",img => img.src);
               const Imagen2= await page.$eval("#main > article > div.product-detail-view__content > div.product-detail-view__main > div.product-detail-view__main-content > section > ul > li:nth-child(2) > button > div > div > picture > img",img => img.src);
 
@@ -394,6 +416,7 @@ app.post('/scrapAdidas', async(req,res)=>{
                 Titulo:Titulo,
                 Precio:Precio,
                 Color:Color,
+                Tamn: item,
                 Imagen1:Imagen1,
                 Imagen2:Imagen2,
                 Meesagge:Meesagge

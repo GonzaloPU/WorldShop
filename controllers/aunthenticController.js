@@ -92,7 +92,7 @@ exports.regi = async (req,res)=>{
           }
           
           res.cookie('jwt', token, cookiesOptions)
-          res.render('dashboard.ejs', {
+          res.render('admin', {
             User:user,
             alert: true,
             alertTitle: "Conexión exitosa",
@@ -100,7 +100,7 @@ exports.regi = async (req,res)=>{
             alertIcon:'success',
             showConfirmButton: false,
             timer: 1100,
-            ruta: ''
+            ruta: 'admin'
        })
 
   
@@ -180,10 +180,8 @@ exports.regi = async (req,res)=>{
 
   }
 
-  exports.listaPedidos = (req,res) =>{
-    connection.query("SELECT *, SUM(precioU)  AS 'total', COUNT(usuario.idUser) AS 'usuarios' FROM pedidos INNER JOIN usuario ON pedidos.idCliente = usuario.idUser AND pedidos.estado = 'activo' ORDER BY usuario.idUser DESC LIMIT 4; ",
-    "SELECT COUNT(estado) AS 'activos' FROM pedidos WHERE estado = 'activo'"
-    ,async (error,results)=>{
+  exports.listaPedidos = (req,res, ) =>{
+    connection.query("SELECT usuario.nombre, COUNT(usuario.idUser) AS 'Activos',pedidos.idPedido, COUNT(pedidos.idPedido) AS 'pedidosact', SUM(pedidos.precioU) as 'totales', pedidos.estado FROM pedidos INNER JOIN usuario ON pedidos.idCliente = usuario.idUser ORDER BY usuario.idUser DESC",async (error,results)=>{
       if(error){
         console.log(error)
       }else{
@@ -197,7 +195,7 @@ exports.regi = async (req,res)=>{
 
   }
   
-  
+ /* 
  exports.pedactivos = (req,res) =>{
     connection.query("SELECT COUNT(estado) FROM pedidos WHERE estado = 'activo'",async (error,results)=>{
       if(error){
@@ -239,4 +237,4 @@ exports.regi = async (req,res)=>{
       }
     })
 
-  }
+  }*/

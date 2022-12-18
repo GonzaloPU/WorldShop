@@ -96,8 +96,7 @@ router.get("/admin-ped", (req, res) => {
 router.get("/stores", (req, res) => {
   res.render("stores.ejs");
 });
-router.get("/admin",aunthentic.listaPedidos,
-(req, res) => {
+router.get("/admin",aunthentic.listaPedidos, (req, res) => {
   res.render("dashboard.ejs");
 });
 
@@ -110,6 +109,9 @@ router.get("/usuarios", aunthentic.listaUsuario, (req, res) => {
 
 router.get("/perfil", (req, res) => {
   res.render("profile.ejs");
+});
+router.get("/checkout", (req, res) => {
+  res.render("checkout.ejs");
 });
 
 

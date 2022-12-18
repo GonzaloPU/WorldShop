@@ -609,7 +609,7 @@ html,body{
 		5. About
 --------------------------------------*/
 .about-us{
-	background: #f9faff;
+	background: rgba(255, 217, 226, 0.13);
 	padding: 120px 0 175px;
 }
 .about-us-txt{
@@ -1749,28 +1749,28 @@ a:active.learn-btn{
 
 .about-part{
 	position:relative;
-	background:url(../../assets/images/about/about-banner.jpg)no-repeat;
+	background:url(../../assets/images/about/ueber-uns-t.jpg)no-repeat;
 	background-position:center;
 	background-size:cover;
 	padding: 124px 0 144px;
 	z-index:1;
 }
 .about-part.service-part{
-	background: url(../images/service/service-banner.jpg)no-repeat center;
+	background: url(../images/service/ueber-uns-t.jpg)no-repeat center;
 }
 .about-part.project-part{
-	background: url(../images/project/project-banner.jpg)no-repeat center;
+	background: url(../images/project/ueber-uns-t.jpg)no-repeat center;
 }
 .about-part.team-part{
-	background: url(../images/team/team-banner.jpg)no-repeat center;
+	background: url(../images/team/ueber-uns-t.jpg)no-repeat center;
 }
 .about-part.blog-part{
-	background: url(../images/blog/blog-banner.jpg)no-repeat center;
+	background: url(../images/blog/ueber-uns-t.jpg)no-repeat center;
 }
 .about-part:before{
 	position:absolute;
 	content:'';
-	background: rgba(115,112,216,.6);
+	background: rgba(255, 217, 226, 0.904);
 	height:100%;
 	width:100%;
 	top:0;
@@ -1800,14 +1800,14 @@ a:active.learn-btn{
     content: "";
 }
 .breadcrumb li>a{
-	color:#dddcff;
+	color:#FFD9E2;
 	font-size:20px;
 	font-weight:500;
 	font-family: 'Playfair Display', serif;
 	text-transform:capitalize;
 }
 .breadcrumb li{
-	color:#dddcff;
+	color:#FFD9E2;
 }
 .breadcrumb li span {
     margin-left:8px;

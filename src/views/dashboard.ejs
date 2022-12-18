@@ -69,7 +69,7 @@
                                 <h3>Ventas totales</h3>
                                 <% if (data) { %>
                                     <% data.forEach(function(item) {%>
-                                <h1>$<%= item.total%></h1>
+                                <h1>$<%= item.totales%></h1>
                                 <%})}%>
                             </div>
                             <div class="progress">
@@ -90,15 +90,15 @@
                         </span>
                         <div class="middle">
                             <div class="left">
-                                <h3>Pedidos Activos</h3>
+                                <h3>Pedidos Totales</h3>
                                 <% if (data) { %>
                                     <% data.forEach(function(item) {%>
-                                <h1><%= item.activos%></h1>
+                                <h1><%= item.pedidosact%></h1>
                                 <%})}%>
                             </div>
                             <div class="progress">
                                 <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
+                                    <circle cx="38" cy="32" r="36"></circle>
                                 </svg>
                                 <div class="number">
                                     <p>23%</p>
@@ -117,7 +117,7 @@
                                 <h3>Usuarios registrados</h3>
                                 <% if (data) { %>
                                     <% data.forEach(function(item) {%>
-                                <h1><%= item.usuarios%></h1>
+                                <h1><%= item.Activos%></h1>
                                 <%})}%>
                             </div>
                             <div class="progress">
@@ -147,14 +147,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        <% if (data) { %>
+                            <% data.forEach(function(item) {%>
                         <tr>
-                            <% if (data) { %>
-                                <% data.forEach(function(item) {%>
-                            <td><%= item.Nombre%></td>
-                            <td><%= item.Nombre%></td>
+                            
+                            <td><%= item.idPedido%></td>
+                            <td><%= item.nombre%></td>
                             <td>Realizado</td>
-                            <td><%= item.Nombre%></td>
+                            <td><%= item.estado%></td>
                             <td class="primary"><a href="/pedidos">Detalle </a></td>
                         </tr>
                         <% })}%>

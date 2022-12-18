@@ -48,17 +48,20 @@
               <h1 class="display-2" style="margin:10px 0; font-weight: 800; font-size: 3.3em;" ><%= Titulo %></h1>
               <p  id="titulo" name="titulo">MODELO: <%= Titulo %></p>
               <hr />
-              <h6>COLOR</h6>
-              <div class="row mt-4" style="padding: 15px 20px;">
-                <i class="fa fa-circle text-light"></i>
-                <i class="fa fa-circle text-warning ml-3"></i>
-                <i class="fa fa-circle text-dark ml-3"></i>
-              </div>
+              
               <hr />
               <div class="detail">
-                <h5>SIZE:<span id="talla" name="talla">M</span></h5>
+                <h5>SIZE:<span id="talla" name="talla">
+                  <select name="" id="" style="padding: 6px 10px; color: #FFF; background: #000; font-size: 13px; text-align: center;">
+                    <% if (Tamn) { %>
+                      <% Tamn.forEach(function(item) {%>
+                        <option value="<%= item%>" style="padding: 50px; color: #FFF; background: #000; font-size: 17px;"><%= item%></option>
+                        <%})}%>
+                  </select>
+                  
+            </select></span></h5>
                 <h5>MATERIAL:<span ><%= Color %></span></h5>
-                <h5>CANTIDAD:<span id="cantidad" name="cantidad">2</span></h5>
+                <h5>CANTIDAD:<span id="cantidad" name="cantidad">1</span></h5>
               </div>
               <hr />
               <div class="price">
@@ -81,126 +84,7 @@
       </div>
     </main>
   
-    <!--hm-footer start-->
-    <section class="hm-footer">
-      <div class="container">
-        <div class="hm-footer-details">
-          <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-              <div class="hm-footer-widget">
-                <div class="hm-foot-title">
-                  <div class="logo">
-                    <a class="navbar-brand" href="index.html">
-                      <p
-                        style="
-                          color: #fff;
-                          font-size: 30px;
-                          padding: 0 0 0 70px;
-                        "
-                      >
-                        WorldShop
-                      </p>
-                    </a>
-                  </div>
-                  <!-- /.logo-->
-                </div>
-                <!--/.hm-foot-title-->
-                <div class="hm-foot-para">
-                  <p>Conoce una nueva forma de comprar el mundo.</p>
-                </div>
-                <!--/.hm-foot-para-->
-                <div class="hm-foot-icon">
-                  <ul>
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-facebook" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <!--/li-->
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-google-plus" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <!--/li-->
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-linkedin" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <!--/li-->
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-twitter" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <!--/li-->
-                  </ul>
-                  <!--/ul-->
-                </div>
-                <!--/.hm-foot-icon-->
-              </div>
-              <!--/.hm-footer-widget-->
-            </div>
-            <!--/.col-->
-            <div class="col-md-2 col-sm-6 col-xs-12">
-              <div class="hm-footer-widget">
-                <div class="hm-foot-title">
-                  <h4>Referencias</h4>
-                </div>
-                <!--/.hm-foot-title-->
-                <div class="footer-menu">
-                  <ul class="">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="about.html">Sobre Nosotros</a></li>
-                    <li><a href="services.html">Servicios</a></li>
-                    <li><a href="contact.html">Contacto</a></li>
-                  </ul>
-                </div>
-                <!-- /.footer-menu-->
-              </div>
-              <!--/.hm-footer-widget-->
-            </div>
-
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="hm-footer-widget">
-                <div class="hm-foot-title">
-                  <h4>Our Newsletter</h4>
-                </div>
-                <!--/.hm-foot-title-->
-                <div class="hm-foot-para">
-                  <p class="para-news">
-                    Suscríbete a nuestro newsletter y podrás conocer antes que
-                    todos promociones, nuevas noticias y muchos más...
-                  </p>
-                </div>
-                <!--/.hm-foot-para-->
-                <div class="hm-foot-email">
-                  <div class="foot-email-box">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Correo Electrónico"
-                    />
-                  </div>
-                  <!--/.foot-email-box-->
-                  <div class="foot-email-subscribe">
-                    <button type="button">Vamos</button>
-                  </div>
-                  <!--/.foot-email-icon-->
-                </div>
-                <!--/.hm-foot-email-->
-              </div>
-              <!--/.hm-footer-widget-->
-            </div>
-            <!--/.col-->
-          </div>
-          <!--/.row-->
-        </div>
-        <!--/.hm-footer-details-->
-      </div>
-      <!--/.container-->
-    </section>
+    
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="

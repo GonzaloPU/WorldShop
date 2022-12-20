@@ -406,6 +406,7 @@ app.post('/scrapZara', async (req, res) => {
       Tamn: item,
       Imagen1: Imagen1,
       Imagen2: Imagen2,
+      Tienda: "Zara",
       Meesagge: Meesagge
     });
 

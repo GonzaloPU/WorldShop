@@ -17,22 +17,24 @@ exports.regi = async (req,res)=>{
     const direccion= data.direc;
     const correo= data.ema;
     const numero= data.num;
-    const idUser=2;
-    const nombre='mario gonzalez';
+    const nombre= "sebastián";
+    
   
     let passwordHaash = await bcryptjs.hash(pass,8);
     const passw=passwordHaash;
     
-   connect.query('INSERT INTO usuario SET ?', {idUser:idUser,nombre:nombre,user:user, pass:passw,correo:correo, direccion:direccion,  numero:numero, genero:genero}, async(error,results)=>{
+   connection.query('INSERT INTO usuario SET ?', {Nombre:nombre,user:user, pass:passw,correo:correo, direccion:direccion,  numero:numero, genero:genero,rol:0}, async(error,results)=>{
     if(error){
       res.send(error);
     }else{
-      res.render("login.ejs");
+      res.render("/checkout");
      }
   })
     } catch (error) {
       console.log(error);
-      res.render('/login')
+      res.render('/checkout',{
+        idUser:idUser
+      })
     }
     
     
@@ -90,8 +92,8 @@ exports.regi = async (req,res)=>{
             expires: new Date(Date.now()+process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
             httpOnly: true
           }
-          
-          res.cookie('jwt', token, cookiesOptions)
+          if(results.rol === "1"){
+            res.cookie('jwt', token, cookiesOptions)
           res.render('admin', {
             User:user,
             alert: true,
@@ -102,6 +104,21 @@ exports.regi = async (req,res)=>{
             timer: 1100,
             ruta: 'admin'
        })
+            
+          }else{
+            res.cookie('jwt', token, cookiesOptions)
+          res.render('profile.ejs', {
+            User:user,
+            alert: true,
+            alertTitle: "Conexión exitosa",
+            alertMessage: "¡LOGIN CORRECTO!",
+            alertIcon:'success',
+            showConfirmButton: false,
+            timer: 1100,
+            ruta: 'profile.ejs'
+       })
+          }
+          
 
   
        

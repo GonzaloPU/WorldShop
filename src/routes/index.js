@@ -114,6 +114,9 @@ router.get("/checkout", (req, res) => {
   res.render("checkout.ejs");
 });
 
+router.get("/terminos-y-condiciones", (req, res) => {
+  res.render("terms_and_conditions.ejs");
+});
 
 
 //direcciones

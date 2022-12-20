@@ -151,3 +151,9 @@ a:hover{
 .Column {
     display: table-cell;
 }
+
+p{
+    float: left; 
+    clear: left; 
+    margin-right:5px;
+}

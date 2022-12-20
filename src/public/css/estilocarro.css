@@ -5,6 +5,12 @@ body {
     background-color: #fff;
     background-repeat: no-repeat;
 }
+p{
+	float: left; 
+	clear: left; 
+	margin-right:5px;
+}
+
 
 .plus-minus {
     position: relative;

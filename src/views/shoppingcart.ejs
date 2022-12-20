@@ -1,195 +1,171 @@
 <!DOCTYPE html>
 <html>
-  <title>Carro de compras</title>
-  <%- include("parts/head") %>
+<title>Carro de compras</title>
+<%- include("parts/head") %>
   <!--CSS-->
   <link rel="stylesheet" href="/css/carro.css" />
-  
+  <!--JS-->
+  <script src="js/scriptcarro.js"></script>
 
   <body>
     <%- include("parts/nav") %>
 
-  <!--Tabla Carrito de Compras-->
-  <div class="card">
-    <div class="row">
-        <div class="col-md-8 cart">
+      <!--Tabla Carrito de Compras-->
+      <div class="card">
+        <div class="row">
+          <div class="col-md-8 cart">
             <div class="title">
-                <div class="row">
-                    <div class="col"><h4><b>Carrito de compras</b></h4></div>
-                    <div class="col align-self-center text-right text-muted"></div>
+              <div class="row">
+                <div class="col">
+                  <h4><b>Carrito de compras</b></h4>
                 </div>
-            </div>    
-            <div class="row border-top border-bottom">
-                <div class="row main align-items-center">
-                  <p style="float: left; clear: left; margin-right:5px"><img class="img-fluid" src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Ff4%2F82%2Ff48257886ad747246911eccf9b3cff072632161e.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_tshirtstanks_shortsleeve%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"></p>
-                  <p>
-                     <div class="Column">
-                        <div class="row text-muted">Shirt</div>
-                        <div class="row">Regular Fit Crew-neck T-shirt</div>
-                    </div>
-                    <div class="Row">
-                      <div class="Column">Talla: M</div>
-                      <div class='Column'>Color :Gray melange</div>
-                      <div class='Column'>Tienda: H&M</div>
-                  </div>
-                </p>
-                    <div class="col">
-                        <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
-                    </div>
-                    <div class="col">$6.229 <span class="close">&#10005;</span></div>
-                </div>
+              </div>
             </div>
-            <div class="back-to-shop"><a href="/index">&leftarrow;</a><span class="text-muted">Regresar</span></div>
-        </div>
-        <div class="col-md-4 summary">
-            <div><h5><b>Resumen de compra</b></h5></div>
+
+            <div id="cont-producto" class="row border-top border-bottom">
+
+              
+          
+            </div>
+
+            <div class="back-to-shop"><a href="/index">&leftarrow;</a><span  class="text-muted">Regresar</span></div>
+          </div>
+
+          <div class="col-md-4 summary">
+            <div>
+              <h5><b>Resumen de compra</b></h5>
+            </div>
             <hr>
             <div class="row">
-                <div class="col" style="padding-left:0;">ITEMS 1</div>
-                <div class="col text-right">$6.229</div>
+              <div class="col" style="padding-left:0;">ITEMS 1</div>
+              <div class="col text-right">$6.229</div>
             </div>
             <form>
-                <p>SHIPPING</p>
-                <select><option class="text-muted">Standard-Delivery- $0</option></select>
+              <p>SHIPPING</p>
+              <select>
+                <option class="text-muted">Standard-Delivery- $0</option>
+              </select>
             </form>
             <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                <div class="col">PRECIO TOTAL</div>
-                <div class="col text-right">$6.229</div>
+              <div class="col">PRECIO TOTAL</div>
+              <div class="col text-right">$6.229</div>
             </div>
-            <a href="carro_login"  class="btn" id="buy-btn">COMPRAR</a>
+            <a href="carro_login" class="btn" id="buy-btn">COMPRAR</a>
+          </div>
         </div>
-    </div>
-  </div>
-<<<<<<< HEAD
+      </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-     
-   
-    
-=======
-     <!--hm-footer start-->
-     <section class="hm-footer">
-      <div class="container">
-        <div class="hm-footer-details">
-          <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-              <div class="hm-footer-widget">
-                <div class="hm-foot-title">
-                  <div class="logo">
-                    <a class="navbar-brand" href="index.html">
-                      <p
-                        style="
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+
+      <!--hm-footer start-->
+      <section class="hm-footer">
+        <div class="container">
+          <div class="hm-footer-details">
+            <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="hm-footer-widget">
+                  <div class="hm-foot-title">
+                    <div class="logo">
+                      <a class="navbar-brand" href="index.html">
+                        <p style="
                           color: #fff;
                           font-size: 30px;
                           padding: 0 0 0 70px;
-                        "
-                      >
-                        WorldShop
-                      </p>
-                    </a>
+                        ">
+                          WorldShop
+                        </p>
+                      </a>
+                    </div>
+                    <!-- /.logo-->
                   </div>
-                  <!-- /.logo-->
+                  <!--/.hm-foot-title-->
+                  <div class="hm-foot-para">
+                    <p>Conoce una nueva forma de comprar el mundo.</p>
+                  </div>
+                  <!--/.hm-foot-para-->
+                  <div class="hm-foot-icon">
+                    <ul>
+                      <li>
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                      </li>
+                      <!--/li-->
+                      <li>
+                        <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                      </li>
+                      <!--/li-->
+                      <li>
+                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                      </li>
+                      <!--/li-->
+                      <li>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                      </li>
+                      <!--/li-->
+                    </ul>
+                    <!--/ul-->
+                  </div>
+                  <!--/.hm-foot-icon-->
                 </div>
-                <!--/.hm-foot-title-->
-                <div class="hm-foot-para">
-                  <p>Conoce una nueva forma de comprar el mundo.</p>
-                </div>
-                <!--/.hm-foot-para-->
-                <div class="hm-foot-icon">
-                  <ul>
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-facebook" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <!--/li-->
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-google-plus" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <!--/li-->
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-linkedin" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <!--/li-->
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-twitter" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <!--/li-->
-                  </ul>
-                  <!--/ul-->
-                </div>
-                <!--/.hm-foot-icon-->
+                <!--/.hm-footer-widget-->
               </div>
-              <!--/.hm-footer-widget-->
-            </div>
-            <!--/.col-->
-            <div class="col-md-2 col-sm-6 col-xs-12">
-              <div class="hm-footer-widget">
-                <div class="hm-foot-title">
-                  <h4>Referencias</h4>
+              <!--/.col-->
+              <div class="col-md-2 col-sm-6 col-xs-12">
+                <div class="hm-footer-widget">
+                  <div class="hm-foot-title">
+                    <h4>Referencias</h4>
+                  </div>
+                  <!--/.hm-foot-title-->
+                  <div class="footer-menu">
+                    <ul class="">
+                      <li><a href="index.html">Inicio</a></li>
+                      <li><a href="about.html">Sobre Nosotros</a></li>
+                      <li><a href="services.html">Servicios</a></li>
+                      <li><a href="contact.html">Contacto</a></li>
+                    </ul>
+                  </div>
+                  <!-- /.footer-menu-->
                 </div>
-                <!--/.hm-foot-title-->
-                <div class="footer-menu">
-                  <ul class="">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="about.html">Sobre Nosotros</a></li>
-                    <li><a href="services.html">Servicios</a></li>
-                    <li><a href="contact.html">Contacto</a></li>
-                  </ul>
-                </div>
-                <!-- /.footer-menu-->
+                <!--/.hm-footer-widget-->
               </div>
-              <!--/.hm-footer-widget-->
-            </div>
 
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="hm-footer-widget">
-                <div class="hm-foot-title">
-                  <h4>Our Newsletter</h4>
-                </div>
-                <!--/.hm-foot-title-->
-                <div class="hm-foot-para">
-                  <p class="para-news">
-                    Suscríbete a nuestro newsletter y podrás conocer antes que
-                    todos promociones, nuevas noticias y muchos más...
-                  </p>
-                </div>
-                <!--/.hm-foot-para-->
-                <div class="hm-foot-email">
-                  <div class="foot-email-box">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Correo Electrónico"
-                    />
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="hm-footer-widget">
+                  <div class="hm-foot-title">
+                    <h4>Our Newsletter</h4>
                   </div>
-                  <!--/.foot-email-box-->
-                  <div class="foot-email-subscribe">
-                    <button type="button">Vamos</button>
+                  <!--/.hm-foot-title-->
+                  <div class="hm-foot-para">
+                    <p class="para-news">
+                      Suscríbete a nuestro newsletter y podrás conocer antes que
+                      todos promociones, nuevas noticias y muchos más...
+                    </p>
                   </div>
-                  <!--/.foot-email-icon-->
+                  <!--/.hm-foot-para-->
+                  <div class="hm-foot-email">
+                    <div class="foot-email-box">
+                      <input type="text" class="form-control" placeholder="Correo Electrónico" />
+                    </div>
+                    <!--/.foot-email-box-->
+                    <div class="foot-email-subscribe">
+                      <button type="button">Vamos</button>
+                    </div>
+                    <!--/.foot-email-icon-->
+                  </div>
+                  <!--/.hm-foot-email-->
                 </div>
-                <!--/.hm-foot-email-->
+                <!--/.hm-footer-widget-->
               </div>
-              <!--/.hm-footer-widget-->
+              <!--/.col-->
             </div>
-            <!--/.col-->
+            <!--/.row-->
           </div>
-          <!--/.row-->
+          <!--/.hm-footer-details-->
         </div>
-        <!--/.hm-footer-details-->
-      </div>
-      <!--/.container-->
-    </section> 
->>>>>>> 6b1a602defd6996c6dbc49cc74c6be01ce1c2819
-    <%- include("parts/footer") %>
+        <!--/.container-->
+      </section>
+      <%- include("parts/footer") %>
   </body>
+
 </html>

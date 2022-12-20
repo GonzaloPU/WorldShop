@@ -67,7 +67,7 @@ exports.regi = async (req,res)=>{
     
     if(user && pass){
       connection.query('SELECT * FROM usuario WHERE user= ?', [user], async (error,results)=>{
-        if(results.length == 0 || (await bcryptjs.compare(pass, results[0].pass))){
+        if(results.length == 0 || !(await bcryptjs.compare(pass, results[0].pass))){
           console.log(await bcryptjs.compare(pass, results[0].pass))
           res.render('login',{
             alert: true,

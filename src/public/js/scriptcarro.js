@@ -1,5 +1,6 @@
 let productos = [];
 let total = 0;
+let number,tnumber = 0;
 
 function add(producto, precio) {
   console.log(producto, precio);
@@ -19,6 +20,7 @@ window.onload = async () => {
   mostrarProducto(listaproductos);
   mostrarPrecio(listaproductos);
   mostrarDetalles(usuariocliente);
+  mostrarTotal(listaproductos);
 }
 
 function mostrarProducto(listaproductos) {
@@ -43,17 +45,37 @@ function mostrarProducto(listaproductos) {
 function mostrarPrecio(listaproductos) {
   let precioHTML = '';
   listaproductos.forEach(element => {
+    var currency = element.precio; //it works for US-style currency strings as well
+    var cur_re = /\D*(\d+|\d.*?\d)(?:\D+(\d{2}))?\D*$/;
+    var parts = cur_re.exec(currency);
+    number = parseFloat(parts[1].replace(/\D/, '') + '.' + (parts[2] ? parts[2] : '00'));
+    number = (number*860);
     precioHTML +=
-      `${element.precio}`
+      '$'+ number
   });
   document.getElementById('precio-checkout').innerHTML = precioHTML;
+}
+
+
+function mostrarTotal(listaproductos) {
+  let totalHTML = '';
+  listaproductos.forEach(element => {
+    var currency = element.precio; //it works for US-style currency strings as well
+    var cur_re = /\D*(\d+|\d.*?\d)(?:\D+(\d{2}))?\D*$/;
+    var parts = cur_re.exec(currency);
+    number = parseFloat(parts[1].replace(/\D/, '') + '.' + (parts[2] ? parts[2] : '00'));
+    number = (number*860) + 32000;
+    totalHTML +=
+      '$'+ number
+  });
+  document.getElementById('total-checkout').innerHTML = totalHTML;
 }
 
 function mostrarDetalles(usuariocliente) {
   let detallesHTML = '';
   usuariocliente.forEach(element => {
-    detallesHTML += 
-    `<div class="details personal">
+    detallesHTML +=
+      `<div class="details personal">
       <fieldset id="fieldset-billing">
        <legend>Detalles Boleta y Envio</legend>
         <div>

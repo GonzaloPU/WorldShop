@@ -9,7 +9,7 @@ const { promisify } = require('util')
 
 
 // Settings
-app.set("port", 8080);
+app.set("port", 80);
 
 app.set("views", path.join(__dirname, "views"));
 

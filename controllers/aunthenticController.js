@@ -27,21 +27,17 @@ exports.regi = async (req,res)=>{
     if(error){
       res.send(error);
     }else{
-<<<<<<< HEAD
+
       res.render("checkout");
-=======
+
       cliente = [
         {
-          cnombre: nombre,
-          cdireccion: direccion,
-          ccorreo: correo,
-          ctelefono: numero,
-          cgenero: genero
+          results
         }
       ]
       localStorage.setItem("usuariocliente", JSON.stringify(cliente));
-      res.render("/checkout");
->>>>>>> c69bf350a07d72353100e1dd97fc973aa478ab74
+      res.render("checkout");
+
      }
   })
     } catch (error) {

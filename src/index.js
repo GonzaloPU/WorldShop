@@ -5,7 +5,6 @@ const app = express();
 const puppeteer = require('puppeteer');
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util')
-const mercadopago = require("mercadopago");
 
 
 
@@ -72,12 +71,6 @@ app.listen(app.get("port"), () => {
   console.log("Server on port", app.get("port"));
 });
 
-
-
-// Agrega credenciales
-mercadopago.configure({
-  access_token: "TEST-2952099168291055-121713-7423f181440a11fdcc0c80bad32941c8-751601749",
-});
 
 
 

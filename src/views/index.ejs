@@ -620,7 +620,21 @@
     </section>
     <!--/.contact-->
 
-   
+    <script>
+      function getUuid() {
+          $.ajax({
+              url: "http://3.215.89.130/api/get-uuid",
+              type: 'GET',
+              success: function (res) {
+                  console.log(res);
+                  $('#result').html(res)
+              },
+              error: function (xhr, ajaxOptions, thrownError) {
+                  $('#result').html(`Error: ${xhr.status} ${thrownError}`)
+              }
+          });
+      }
+  </script>
     <%- include("parts/footer") %>
   </body>
 </html>

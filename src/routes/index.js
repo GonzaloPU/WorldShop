@@ -3,11 +3,12 @@ const router = express.Router();
 const bcryptjs= require('bcryptjs');
 const connection = require("../../database/database");
 const { results } = require("express-validator");
-const app= express();
+const app= express.Router();
 const aunthentic = require('../../controllers/aunthenticController')
 
 
-router.use(express.static(__dirname + "../public"));
+router.use(express.static(__dirname ));
+
 
 router.get("/", (req, res) => {
   res.render("index.ejs");
@@ -120,8 +121,10 @@ router.get("/terminos-y-condiciones", (req, res) => {
 
 
 //direcciones
+
+router.post('/logins', aunthentic.logins)
+router.get('/delete/:idPedido', aunthentic.delete)
 router.post('/regi', aunthentic.regi)
-router.post('/login', aunthentic.login)
 router.get('/logout', aunthentic.logout)
 
 module.exports = router;

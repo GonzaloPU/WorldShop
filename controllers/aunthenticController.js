@@ -16,7 +16,7 @@ exports.regi = async (req,res)=>{
     const direccion= data.direc;
     const correo= data.ema;
     const numero= data.num;
-    const nombre= "sebastián";
+    const nombre= data.nombre;
     
   
     let passwordHaash = await bcryptjs.hash(pass,8);
@@ -32,7 +32,7 @@ exports.regi = async (req,res)=>{
   })
     } catch (error) {
       console.log(error);
-      res.render('/checkout',{
+      res.render('checkout',{
         idUser:idUser
       })
     }
@@ -41,7 +41,7 @@ exports.regi = async (req,res)=>{
 
  
   //Login
-  exports.login = async(req,res)=>{
+  exports.logins = async(req,res)=>{
   
     try {
       const data= req.body;
@@ -81,7 +81,7 @@ exports.regi = async (req,res)=>{
           
           const idUser= results[0].idUser
         
-
+  
           const token = jwt.sign({id:idUser}, process.env.JWT_SECRETO, {
               expiresIn: process.env.JWT_TIEMPO_EXPIRA
           })
@@ -92,35 +92,21 @@ exports.regi = async (req,res)=>{
             expires: new Date(Date.now()+process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
             httpOnly: true
           }
-          if(results.rol === "1"){
-            res.cookie('jwt', token, cookiesOptions)
-          res.render('admin', {
-            User:user,
-            alert: true,
-            alertTitle: "Conexión exitosa",
-            alertMessage: "¡LOGIN CORRECTO!",
-            alertIcon:'success',
-            showConfirmButton: false,
-            timer: 1100,
-            ruta: 'admin'
-       })
-            
-          }else{
-            res.cookie('jwt', token, cookiesOptions)
-          res.render('profile.ejs', {
-            User:user,
-            alert: true,
-            alertTitle: "Conexión exitosa",
-            alertMessage: "¡LOGIN CORRECTO!",
-            alertIcon:'success',
-            showConfirmButton: false,
-            timer: 1100,
-            ruta: 'profile.ejs'
-       })
-          }
           
-
-  
+            res.cookie('jwt', token, cookiesOptions)
+            
+            connection.query("SELECT usuario.nombre, COUNT(usuario.idUser) AS 'Activos',pedidos.idPedido, COUNT(pedidos.idPedido) AS 'pedidosact', SUM(pedidos.precioU) as 'totales', pedidos.estado FROM pedidos INNER JOIN usuario ON pedidos.idCliente = usuario.idUser ORDER BY usuario.idUser DESC",async (error,results)=>{
+              if(error){
+                console.log(error)
+              }else{
+                res.render('admin',{
+                  data: results
+                
+                })
+              
+              }
+            })
+            
        
         
         }
@@ -128,34 +114,15 @@ exports.regi = async (req,res)=>{
     }
       
   }} catch (error) {
+      throw error;
       console.log(error);
-      res.render('/login')
+      
       
     }
   
     
   
   }
-  
-  exports.isAuthenticated = async (req, res, next)=>{
-    console.log(req.cookies)
-    if (req.cookies.User) {
-        try {
-            const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
-            connection.query('SELECT * FROM usuario WHERE idUser = ?', [decodificada.id], (error, results)=>{
-                if(!results){return next()}
-                req.user = results[0]
-                return next()
-            })
-        } catch (error) {
-            console.log(error)
-            return next()
-        }
-    }else{
-        res.redirect('/login')        
-    }
-}
-
   
   exports.logout = async(req, res)=>{
     res.clearCookie('jwt')
@@ -183,7 +150,7 @@ exports.regi = async (req,res)=>{
   }
 
   exports.listaUsuario = (req,res) =>{
-    connection.query("SELECT * FROM usuario ",async (error,results)=>{
+    connection.query("SELECT * FROM usuario ORDER BY usuario.idUser DESC",async (error,results)=>{
       if(error){
         console.log(error)
       }else{
@@ -197,12 +164,12 @@ exports.regi = async (req,res)=>{
 
   }
 
-  exports.listaPedidos = (req,res, ) =>{
+  exports.listaPedidos = (req,res) =>{
     connection.query("SELECT usuario.nombre, COUNT(usuario.idUser) AS 'Activos',pedidos.idPedido, COUNT(pedidos.idPedido) AS 'pedidosact', SUM(pedidos.precioU) as 'totales', pedidos.estado FROM pedidos INNER JOIN usuario ON pedidos.idCliente = usuario.idUser ORDER BY usuario.idUser DESC",async (error,results)=>{
       if(error){
         console.log(error)
       }else{
-        res.render('dashboard.ejs',{
+        res.render('admin',{
           data: results
         
         })
@@ -211,6 +178,15 @@ exports.regi = async (req,res)=>{
     })
 
   }
+exports.delete = (req,res) =>{
+  const {idPedido} = req.params;
+  connection.query("DELETE FROM pedidos WHERE idPedido = ?",[idPedido],async (error,results)=>{
+    res.redirect('/pedidos')
+  })
+}
+
+
+
   
  /* 
  exports.pedactivos = (req,res) =>{

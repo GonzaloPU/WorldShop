@@ -74,7 +74,7 @@ function mostrarDetalles(usuariocliente) {
         </div>
         <div>
          <label for="genero">Genero</label>
-         <input type="text" name="genero" id="genero" data-type="string" value="${element.genero}" readonly>
+         <input type="text" name="genero" id="genero" data-type="string" value="${element.cgenero}" readonly>
         </div>
       </fieldset>
     </div>`;

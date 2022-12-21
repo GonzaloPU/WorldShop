@@ -3,7 +3,6 @@ const bcryptjs = require('bcryptjs')
 const connection = require('../database/database')
 const {promisify} = require('util');
 const { json } = require('express');
-let cliente = [];
 
 //registration
 exports.regi = async (req,res)=>{
@@ -24,9 +23,11 @@ exports.regi = async (req,res)=>{
     const passw=passwordHaash;
     
    connection.query('INSERT INTO usuario SET ?', {Nombre:nombre,user:user, pass:passw,correo:correo, direccion:direccion,  numero:numero, genero:genero,rol:0}, async(error,results)=>{
+   
     if(error){
       res.send(error);
     }else{
+<<<<<<< HEAD
 
       res.render("checkout");
 
@@ -38,6 +39,9 @@ exports.regi = async (req,res)=>{
       localStorage.setItem("usuariocliente", JSON.stringify(cliente));
       res.render("checkout");
 
+=======
+      res.render("/checkout");
+>>>>>>> 8f18d51503027a93fba9793e8afdc2988dc04128
      }
   })
     } catch (error) {
@@ -46,7 +50,6 @@ exports.regi = async (req,res)=>{
         idUser:idUser
       })
     }
-    
     
   };
 

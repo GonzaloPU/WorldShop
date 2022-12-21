@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 
 // SDK de Mercado Pago
-const mercadopago = require("mercadopago");
+
 
 
 
@@ -76,9 +76,7 @@ app.listen(app.get("port"), () => {
 
 
 // Agrega credenciales
-mercadopago.configure({
-  access_token: "TEST-2952099168291055-121713-7423f181440a11fdcc0c80bad32941c8-751601749",
-});
+
 
 
 
@@ -99,22 +97,13 @@ app.post('/scrapHm', async (req, res) => {
 
   (async () => {
     try {
+      const data = req.body;
 
+    const urls = data.url;
 
-<<<<<<< HEAD
     const browser = await puppeteer.launch({ headless: false});
     const page = await browser.newPage();
     await page.goto(urls);
-=======
-      const data = req.body;
-
-      const urls = data.url;
->>>>>>> 467bd3596f068c9d70bc9af47ccc2a21444caaca
-
-
-      const browser = await puppeteer.launch({ headless: false });
-      const page = await browser.newPage();
-      await page.goto(urls);
 
 
       await page.waitForSelector('#js-product-name > div > h1')
@@ -142,8 +131,8 @@ app.post('/scrapHm', async (req, res) => {
       //Scraping Product Color
       let colors = await page.$('#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > div.sub-content.product-detail-info.product-detail-meta.inner.sticky-on-scroll.semi-sticky > div > div.product-colors.miniatures.clearfix.slider-completed.loaded > h3');
       let Color = await page.evaluate(el => el.textContent, colors);
-      const Imagen1 = await page.$eval("#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews.best-price-highlight-pdp > div.module.product-description.sticky-wrapper > figure.pdp-image.product-detail-images.product-detail-main-image > div > img", img => img.src);
-      const Imagen2 = await page.$eval("#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > figure:nth-child(4) > img", img => img.src);
+      const Imagen1 = await page.$eval("#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > figure.pdp-image.product-detail-images.product-detail-main-image > div > img", img => img.src);
+      const Imagen2 = await page.$eval("#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > figure.pdp-image.product-detail-images.product-detail-main-image > div > img", img => img.src);
 
       const Meesagge = "Todos los derechos de los productos expuestos quedan reservados a nombre de la tienda internacional @H&M Hennes & Mauritz AB"
 
@@ -177,17 +166,7 @@ app.post('/scrapHm', async (req, res) => {
         ],
       };
 
-      mercadopago.preferences
-        .create(preference)
-        .then(function (response) {
-          // Este valor reemplazará el string "<%= global.id %>" en tu HTML
-          global.id = response.body.id;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-
-
+     
 
       /*
       productos = [

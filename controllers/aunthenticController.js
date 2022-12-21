@@ -35,7 +35,7 @@ exports.regi = async (req,res)=>{
           results
         }
       ]
-      localStorage.setItem("usuariocliente", JSON.stringify(cliente));
+      
       res.render("checkout");
 
      }

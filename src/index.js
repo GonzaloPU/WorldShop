@@ -101,9 +101,15 @@ app.post('/scrapHm', async (req, res) => {
     try {
 
 
+<<<<<<< HEAD
+    const browser = await puppeteer.launch({ headless: false});
+    const page = await browser.newPage();
+    await page.goto(urls);
+=======
       const data = req.body;
 
       const urls = data.url;
+>>>>>>> 467bd3596f068c9d70bc9af47ccc2a21444caaca
 
 
       const browser = await puppeteer.launch({ headless: false });

@@ -159,6 +159,59 @@ exports.regi = async (req,res)=>{
 
   }
 
+  //ingresar pedido
+  exports.regi = async (req,res)=>{
+
+    try {
+      const data= req.body;
+    
+    const user= data.username;
+    const pass= data.password;
+    const genero= data.gen;
+    const direccion= data.direc;
+    const correo= data.ema;
+    const numero= data.num;
+    const nombre= data.nombre;
+    
+  
+    let passwordHaash = await bcryptjs.hash(pass,8);
+    const passw=passwordHaash;
+    
+   connection.query('INSERT INTO pedidos SET ?', {idCliente: cliente, nombreProducto:nombre,tallaProducto:talla, colorProducto:color, cantidad:1, precioU:precio,  link:link, estado:activo,rol:0}, async(error,results)=>{
+   
+    if(error){
+      res.send(error);
+    }else{
+
+      res.render("checkout");
+
+      cliente = [
+        {
+          results
+        }
+      ]
+      localStorage.setItem("usuariocliente", JSON.stringify(cliente));
+      res.render("checkout");
+
+     }
+  })
+    } catch (error) {
+      console.log(error);
+      res.render('checkout',{
+        idUser:idUser
+      })
+    }
+    
+  };
+
+
+
+
+
+
+
+
+
   exports.listaUsuario = (req,res) =>{
     connection.query("SELECT * FROM usuario ORDER BY usuario.idUser DESC",async (error,results)=>{
       if(error){

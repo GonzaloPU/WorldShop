@@ -153,24 +153,19 @@ app.post('/scrapHm', async (req, res) => {
         Tienda: 'H&M'
       });
 
-      var currency = Precio; //it works for US-style currency strings as well
-      var cur_re = /\D*(\d+|\d.*?\d)(?:\D+(\d{2}))?\D*$/;
-      var parts = cur_re.exec(currency);
-      var number = parseFloat(parts[1].replace(/\D/, '') + '.' + (parts[2] ? parts[2] : '00'));
-      number = (number * 860) + 32000;
-      console.log(number);
+     
 
       // Crea un objeto de preferencia
       let preference = {
         items: [
           {
             title: Titulo,
-            unit_price: number,
+            unit_price: 100,
             quantity: 1,
           },
         ],
       };
-
+      console.log(preference);
       mercadopago.preferences
         .create(preference)
         .then(function (response) {

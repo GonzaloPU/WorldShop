@@ -5,12 +5,11 @@ const app = express();
 const puppeteer = require('puppeteer');
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util')
-const mercadopago = require("mercadopago");
 
 
 
 // Settings
-
+app.set("port", 8080);
 
 app.set("views", path.join(__dirname, "views"));
 
@@ -68,15 +67,10 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 
 //server listening
-const serverHttp = http.createServer(app);
-serverHttp.listen(process.env.HTTP_PORT, process.env.IP);
-serverHttp.on('listening', () => console.info(`Notes App running at http://${process.env.IP}:${process.env.HTTP_PORT}`));
-
-
-// Agrega credenciales
-mercadopago.configure({
-  access_token: "TEST-2952099168291055-121713-7423f181440a11fdcc0c80bad32941c8-751601749",
+app.listen(app.get("port"), () => {
+  console.log("Server on port", app.get("port"));
 });
+
 
 
 

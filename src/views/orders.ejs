@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    
+    <link rel="shortcut icon" type="image/icon" href="/images/logo/SW02.png" />
    
  
 
@@ -18,7 +18,7 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="/images/logo/sw-brown.png">
+                    <img src="/images/logo/SW01.png">
                     <h2>Shopping <span> World </span></h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -67,6 +67,7 @@
                                 <table>
                                     <thead>
                                         <tr>
+                                            <th>#ID</th>
                                             <th>Cliente</th>
                                             <th>Cantidad</th>
                                             <th>Productos</th>
@@ -84,8 +85,10 @@
                                     <tbody>
                                         <% if (data) { %>
                                             <% data.forEach(function(item) {%>
-                                           
+                                        
                                                 <tr>
+                                                 
+                                                    <td><%= item.idPedido%></td>
                                                     <td><%= item.Nombre%></td>
                                                     <td><%= item.cantidad%></td>
                                                     <td><%= item.nombreProducto%></td>
@@ -95,8 +98,8 @@
                                                     <td><%= item.correo%></td>
                                                     <td><%= item.numero%></td>
                                                     <td><%= item.precioU%></td>
-                                                    <td><%= item.link%></td>
-                                                    <td> <button>FINALIZAR</button></td>
+                                                    <td><a href="<%= item.link%>" target="_blank"><%= item.link%></a></td>
+                                                    <td> <a href="/delete/<%= item.idPedido%>" style="cursor: pointer;">Finalizar</a></td>
 
                                                 </tr>
                                                 <% })}%>

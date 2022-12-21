@@ -6,6 +6,8 @@ const puppeteer = require('puppeteer');
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util')
 
+
+
 // Settings
 app.set("port", 8080);
 
@@ -18,6 +20,15 @@ app.engine("html", require("ejs").renderFile);
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+app.use((error, req, res, next)=>{
+    res.status(400).json({
+      status: 'error',  
+      message: error.message,
+    })
+}) ;
+
+
 
 // dotenv
 const dotenv = require("dotenv");
@@ -48,6 +59,7 @@ const cookieParser = require("cookie-parser");
 
 // routes
 app.use(require("./routes/index"));
+
 app.use("/links", require("./routes/links"));
 
 // Statics Files
@@ -59,12 +71,22 @@ app.listen(app.get("port"), () => {
   console.log("Server on port", app.get("port"));
 });
 
+
+
+
+
+
+
+
 //Scraping Web
 //Inicio Scrapping H&M
 app.post('/scrapHm', async (req, res) => {
 
 
   (async () => {
+    try {
+      
+    
     const data = req.body;
 
     const urls = data.url;
@@ -100,7 +122,7 @@ app.post('/scrapHm', async (req, res) => {
     //Scraping Product Color
     let colors = await page.$('#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > div.sub-content.product-detail-info.product-detail-meta.inner.sticky-on-scroll.semi-sticky > div > div.product-colors.miniatures.clearfix.slider-completed.loaded > h3');
     let Color = await page.evaluate(el => el.textContent, colors);
-    const Imagen1 = await page.$eval("#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > figure:nth-child(4) > img", img => img.src);
+    const Imagen1 = await page.$eval("#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews.best-price-highlight-pdp > div.module.product-description.sticky-wrapper > figure.pdp-image.product-detail-images.product-detail-main-image > div > img", img => img.src);
     const Imagen2 = await page.$eval("#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > figure:nth-child(4) > img", img => img.src);
 
     const Meesagge = "Todos los derechos de los productos expuestos quedan reservados a nombre de la tienda internacional @H&M Hennes & Mauritz AB"
@@ -116,6 +138,9 @@ app.post('/scrapHm', async (req, res) => {
       Meesagge: Meesagge,
       Tienda: 'H&M'
     });
+  } catch (error) {
+    throw error;
+  }
   })();
 })
 
@@ -341,7 +366,9 @@ app.post('/scrapNike', async (req, res) => {
 //Inicio Scrapping Zara
 app.post('/scrapZara', async (req, res) => {
 
-
+  try {
+    
+  
   (async () => {
     const data = req.body;
 
@@ -411,6 +438,9 @@ app.post('/scrapZara', async (req, res) => {
     });
 
   })();
+} catch (error) {
+   res.status(400).json();
+}
 })
 
 

@@ -100,12 +100,6 @@ function mostrarDetalles(usuariocliente) {
 
 
 
-
-
-
-
-
-
 /*
 async function pay() {
   carrito.push(titulo);

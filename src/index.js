@@ -6,8 +6,7 @@ const puppeteer = require('puppeteer');
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 
-// SDK de Mercado Pago
-const mercadopago = require("mercadopago");
+
 
 
 
@@ -76,9 +75,7 @@ app.listen(app.get("port"), () => {
 
 
 // Agrega credenciales
-mercadopago.configure({
-  access_token: "TEST-2952099168291055-121713-7423f181440a11fdcc0c80bad32941c8-751601749",
-});
+
 
 
 
@@ -101,15 +98,9 @@ app.post('/scrapHm', async (req, res) => {
     try {
 
 
-<<<<<<< HEAD
-    const browser = await puppeteer.launch({ headless: false});
-    const page = await browser.newPage();
-    await page.goto(urls);
-=======
       const data = req.body;
 
       const urls = data.url;
->>>>>>> 467bd3596f068c9d70bc9af47ccc2a21444caaca
 
 
       const browser = await puppeteer.launch({ headless: false });
@@ -161,26 +152,7 @@ app.post('/scrapHm', async (req, res) => {
 
      
 
-      // Crea un objeto de preferencia
-      let preference = {
-        items: [
-          {
-            title: Titulo,
-            unit_price: 100,
-            quantity: 1,
-          },
-        ],
-      };
-      console.log(preference);
-      mercadopago.preferences
-        .create(preference)
-        .then(function (response) {
-          // Este valor reemplazará el string "<%= global.id %>" en tu HTML
-          global.id = response.body.id;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      
 
 
 

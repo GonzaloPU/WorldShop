@@ -29,7 +29,13 @@
                         </div>
 
                         <div id="detalles-envio" class="form first">
-
+                            <div>
+                                <label for="id">ID</label>
+                                <%if (data){%>
+                                    <%foreach data.foreach(function(item){%>
+                                <input type="text" name="id" id="id" data-type="string" value="<%= item.idUser%>" readonly>
+                                <%)}}%>
+                              </div>
                         </div>
 
                     </div>
@@ -53,7 +59,10 @@
                             <p>PRECIO TOTAL</p>
                             <div id="total-checkout" class="col text-right">$</div>
                         </div>
-                        <input type="submit" value="Pagar" onclick="pay()" />
+                        <button id="pagar" class="sumbit">
+                            <span class="btnText">Pagar</span>
+                            <i class="uil uil-navigator"></i>
+                          </button>
                     </div>
 
                 </div>

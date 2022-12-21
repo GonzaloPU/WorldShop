@@ -92,7 +92,7 @@ app.post('/scrapHm', async (req, res) => {
     const urls = data.url;
 
 
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(urls);
 

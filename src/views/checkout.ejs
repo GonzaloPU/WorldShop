@@ -1,135 +1,72 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Checkout</title>
+<title>Carro de compras</title>
+<%- include("parts/head") %>
     <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="css/estilocarro.css" media="screen" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" rel="stylesheet" />
-    <!--Script-->
+    <link rel="stylesheet" href="/css/carro.css" />
+    <!--JS-->
+    <script src="js/scriptcarro.js"></script>
 
-  
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-</head>
+    <body>
+        <%- include("parts/nav") %>
 
-<body>
-    <!--Tabla Resumen Carrito de Compras-->
-    <div id="site">
-        <div id="content">
-            <h1 class="heading">Resumen de compra</h1>
-            <table class="shopping-cart">
-                <thead>
-                    <tr>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Talla</th>
-                        <th scope="col">Color</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Tienda</th>
-                        <th scope="col">Precio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class='pname'>Regular Fit Crew-neck T-shirt</td>
-                        <td class='talla'>M</td>
-                        <td class='color'>Gray melange</td>
-                        <td class='pqty'> 1 </td>
-                        <td class='tienda'>H&M</td>
-                        <td class='pprice'>$6.229</td>
-                    </tr>
-                    </tr>
-                </tbody>
-            </table>
-            <div id="pricing">
-                <p id="sub-total">
-                    <strong>Sub Total</strong>:<span id="stotal">$6.229</span>
-                </p>
-                <p id="shipping">
-                    <strong>Envio</strong>:<span id="sshipping">$0.00</span>
-                </p>
+            <!--Tabla Carrito de Compras-->
 
-                <p id="sub-total">
-                    <strong>Total</strong>:<span id="stotal">$6.229</span>
-                </p>
-            </div>
-            <ul id="shopping-cart-actions">
-                <li>
-                    <a href="shoppingcart" class="btn">Volver</a>
-                </li>
-            </ul>
+            <div class="card">
 
-
-
-            <form action="orden" method="GET">
-                <div class="form first">
-                    <div class="details personal">
-                        <h2>Detalles</h2>
-
-                        <fieldset id="fieldset-billing">
-                            <legend>Boleta y Envio</legend>
-                            <div>
-                                <label for="name">Nombre</label>
-                                <input type="text" name="name" id="name" data-type="string"
-                                    placeholder="Ingrese nombre completo" required />
+                <div class="row">
+                    <div class="col-md-8 cart">
+                        <div class="title">
+                            <div class="row">
+                                <div class="col">
+                                    <h4><b>Carrito de compras</b></h4>
+                                </div>
                             </div>
-                            <div>
-                                <label for="rut">Rut</label>
-                                <input type="text" name="rut" id="rut" data-type="string" placeholder="Ingrese Rut"
-                                    required />
-                            </div>
-                            <div>
-                                <label for="email">Email</label>
-                                <input type="email" name="email" id="email" data-type="expression"
-                                    placeholder="Ingrese correo electrónico" required />
-                            </div>
+                        </div>
 
-                            <div>
-                                <label for="telefono">Telefono</label>
-                                <input type="tel" placeholder="Ingrese telefono: +569XXXXXXXX" name="telefono"
-                                    id="telefono" data-type="string" required />
-                            </div>
-                            <div>
-                                <label for="address">Direccion</label>
-                                <input type="text" name="address" id="address" data-type="string"
-                                    placeholder="Ingrese Direccion" required />
-                            </div>
-                            <div>
-                                <label for="comuna">Comuna</label>
-                                <input type="text" name="comuna" id="comuna" data-type="string"
-                                    placeholder="Ingrese Comuna" required />
-                            </div>
+                        <div id="cont-producto" class="row border-top border-bottom">
 
-                            <div>
-                                <label for="city">Ciudad</label>
-                                <input type="text" name="city" id="city" data-type="string" placeholder="Ingrese Ciudad"
-                                    required />
-                            </div>
-                        </fieldset>
-                        <input type="submit"  value="Continuar" class="btn-block btn-blue" />
+                        </div>
+
+                        <div id="detalles-envio" class="form first">
+
+                        </div>
+
                     </div>
+
+                    <div class="col-md-4 summary">
+                        <div>
+                            <h5><b>Resumen de compra</b></h5>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col" style="padding-left:0;">ITEMS 1</div>
+                            <div id="precio-checkout" class="col text-right">
+
+                            </div>
+                        </div>
+                        <form>
+                            <p>SHIPPING</p>
+                            <select>
+                                <option class="text-muted">Standard-Delivery- $0</option>
+                            </select>
+                        </form>
+                        <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                            <div class="col">PRECIO TOTAL</div>
+                            <div class="col text-right">$6.229</div>
+                        </div>
+                        <input type="submit" value="Pagar" class="btn-block btn-blue" />
+                    </div>
+
                 </div>
-            </form>
-        </div>
-    </div>
 
+            </div>
 
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-</body>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous">
+                </script>
+            <%- include("parts/footer") %>
+    </body>
 
 </html>

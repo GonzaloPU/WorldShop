@@ -15,7 +15,10 @@ function pay() {
 
 window.onload = async () => {
   var listaproductos = JSON.parse(localStorage.getItem("listaproductos") || "[]");
+  var usuariocliente = JSON.parse(localStorage.getItem("usuariocliente") || "[]");
   mostrarProducto(listaproductos);
+  mostrarPrecio(listaproductos);
+  mostrarDetalles(usuariocliente);
 }
 
 function mostrarProducto(listaproductos) {
@@ -37,3 +40,44 @@ function mostrarProducto(listaproductos) {
   document.getElementById('cont-producto').innerHTML = carroHTML;
 }
 
+function mostrarPrecio(listaproductos) {
+  let precioHTML = '';
+  listaproductos.forEach(element => {
+    precioHTML +=
+      `${element.precio}`
+  });
+  document.getElementById('precio-checkout').innerHTML = precioHTML;
+}
+
+function mostrarDetalles(usuariocliente) {
+  let detallesHTML = '';
+  usuariocliente.forEach(element => {
+    detallesHTML += 
+    `<div class="details personal">
+      <fieldset id="fieldset-billing">
+       <legend>Detalles Boleta y Envio</legend>
+        <div>
+          <label for="name">Nombre</label>
+          <input type="text" name="name" id="name" data-type="string" value="${element.cnombre}" readonly>
+        </div>
+        <div>
+          <label for="address">Direccion</label>
+          <input type="text" name="address" id="address" data-type="string" value="${element.cdireccion}" readonly>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" data-type="expression" value="${element.ccorreo}" readonly>
+        </div>
+        <div>
+         <label for="telefono">Telefono</label>
+         <input type="tel" name="telefono" id="telefono" data-type="string" value="${element.ctelefono}" readonly>
+        </div>
+        <div>
+         <label for="genero">Genero</label>
+         <input type="text" name="genero" id="genero" data-type="string" value="${element.genero}" readonly>
+        </div>
+      </fieldset>
+    </div>`;
+  });
+  document.getElementById('detalles-envio').innerHTML = detallesHTML;
+}

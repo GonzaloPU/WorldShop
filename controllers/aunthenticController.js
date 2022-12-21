@@ -3,7 +3,7 @@ const bcryptjs = require('bcryptjs')
 const connection = require('../database/database')
 const {promisify} = require('util');
 const { json } = require('express');
-
+let cliente = [];
 
 //registration
 exports.regi = async (req,res)=>{
@@ -27,7 +27,21 @@ exports.regi = async (req,res)=>{
     if(error){
       res.send(error);
     }else{
+<<<<<<< HEAD
       res.render("checkout");
+=======
+      cliente = [
+        {
+          cnombre: nombre,
+          cdireccion: direccion,
+          ccorreo: correo,
+          ctelefono: numero,
+          cgenero: genero
+        }
+      ]
+      localStorage.setItem("usuariocliente", JSON.stringify(cliente));
+      res.render("/checkout");
+>>>>>>> c69bf350a07d72353100e1dd97fc973aa478ab74
      }
   })
     } catch (error) {
@@ -39,7 +53,8 @@ exports.regi = async (req,res)=>{
     
     
   };
-  
+
+ 
   //Login
   exports.logins = async(req,res)=>{
   

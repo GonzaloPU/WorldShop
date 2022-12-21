@@ -20,13 +20,13 @@ function mostrarProducto(listaproductos) {
       `<div class="row main align-items-center">
     <p><img class="img-fluid" src="${element.imagen}"/></p>
        <div class="Column">
-          <h4 class="row">${element.nombre}</h4>
-          <div class="row">Talla:${element.talla}</div>
-          <div class='row'>Color:${element.color}</div>
+          <h4 id="nombre" class="row">${element.nombre}</h4>
+          <div id="talla" class="row">Talla:${element.talla}</div>
+          <div id="color" class='row'>Color:${element.color}</div>
           <div class='row'>Tienda:${element.tienda}</div>
       </div>
     </p>
-      <h3 class="col">${element.precio}</h3>
+      <h3 id=precio" class="col">${element.precio}</h3>
     </div>`
     titulo = element.nombre;
   });

@@ -6,7 +6,10 @@ const puppeteer = require('puppeteer');
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 
+<<<<<<< HEAD
 // SDK de Mercado Pago
+=======
+>>>>>>> 1b8f4e08185d6f2b3165bc9346584f13e1e7ffd5
 
 
 
@@ -101,9 +104,20 @@ app.post('/scrapHm', async (req, res) => {
 
     const urls = data.url;
 
+<<<<<<< HEAD
     const browser = await puppeteer.launch({ headless: false});
     const page = await browser.newPage();
     await page.goto(urls);
+=======
+      const data = req.body;
+
+      const urls = data.url;
+
+
+      const browser = await puppeteer.launch({ headless: false });
+      const page = await browser.newPage();
+      await page.goto(urls);
+>>>>>>> 1b8f4e08185d6f2b3165bc9346584f13e1e7ffd5
 
 
       await page.waitForSelector('#js-product-name > div > h1')
@@ -148,13 +162,9 @@ app.post('/scrapHm', async (req, res) => {
         Tienda: 'H&M'
       });
 
-      var currency = Precio; //it works for US-style currency strings as well
-      var cur_re = /\D*(\d+|\d.*?\d)(?:\D+(\d{2}))?\D*$/;
-      var parts = cur_re.exec(currency);
-      var number = parseFloat(parts[1].replace(/\D/, '') + '.' + (parts[2] ? parts[2] : '00'));
-      number = (number * 860) + 32000;
-      console.log(number);
+     
 
+<<<<<<< HEAD
       // Crea un objeto de preferencia
       let preference = {
         items: [
@@ -167,6 +177,11 @@ app.post('/scrapHm', async (req, res) => {
       };
 
      
+=======
+      
+
+
+>>>>>>> 1b8f4e08185d6f2b3165bc9346584f13e1e7ffd5
 
       /*
       productos = [

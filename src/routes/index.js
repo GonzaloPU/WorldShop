@@ -125,6 +125,7 @@ router.get("/terminos-y-condiciones", (req, res) => {
 router.post('/logins', aunthentic.logins)
 router.get('/delete/:idPedido', aunthentic.delete)
 router.post('/regi', aunthentic.regi)
+router.post('/pay', aunthentic.pay)
 router.get('/logout', aunthentic.logout)
 
 module.exports = router;

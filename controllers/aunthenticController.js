@@ -176,6 +176,7 @@ exports.pay = async (req, res) => {
     const link = data.url;
     const idCliente = data.id;
     
+    
     connection.query('INSERT INTO pedidos SET ?', { idCliente: cliente, nombreProducto: nombre, tallaProducto: talla, colorProducto: color, cantidad: 1, precioU: precio, link: link, estado: activo, rol: 0 }, async (error, results) => {
 
       if (error) {

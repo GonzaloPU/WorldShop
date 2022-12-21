@@ -1,26 +1,16 @@
-let productos = [];
+let carrito = [];
 let total = 0;
 let number,tnumber = 0;
-
-function add(producto, precio) {
-  console.log(producto, precio);
-  products.push(producto);
-  total = total + precio;
-}
-
-function pay() {
-  console.log(producto, precio);
-  window.alert(productos.join(","));
-}
-
+titulo='';
+precio=0;
 
 window.onload = async () => {
   var listaproductos = JSON.parse(localStorage.getItem("listaproductos") || "[]");
   var usuariocliente = JSON.parse(localStorage.getItem("usuariocliente") || "[]");
   mostrarProducto(listaproductos);
   mostrarPrecio(listaproductos);
-  mostrarDetalles(usuariocliente);
   mostrarTotal(listaproductos);
+  mostrarDetalles(usuariocliente);
 }
 
 function mostrarProducto(listaproductos) {
@@ -38,6 +28,7 @@ function mostrarProducto(listaproductos) {
     </p>
       <h3 class="col">${element.precio}</h3>
     </div>`
+    titulo = element.nombre;
   });
   document.getElementById('cont-producto').innerHTML = carroHTML;
 }
@@ -65,6 +56,7 @@ function mostrarTotal(listaproductos) {
     var parts = cur_re.exec(currency);
     number = parseFloat(parts[1].replace(/\D/, '') + '.' + (parts[2] ? parts[2] : '00'));
     number = (number*860) + 32000;
+    precio = number;
     totalHTML +=
       '$'+ number
   });
@@ -103,3 +95,21 @@ function mostrarDetalles(usuariocliente) {
   });
   document.getElementById('detalles-envio').innerHTML = detallesHTML;
 }
+
+
+
+
+
+/*
+async function pay() {
+  carrito.push(titulo);
+  const productlist = await (await fetch ("/api/productos",{
+    method: "post",
+    body: JSON.stringify(carrito),
+    headers: {
+      "Content Type": "aplication/json"
+    }
+
+  })).JSON();
+
+}*/

@@ -4,7 +4,10 @@ const path = require("path");
 const app = express();
 const puppeteer = require('puppeteer');
 const jwt = require('jsonwebtoken');
-const { promisify } = require('util')
+const { promisify } = require('util');
+
+// SDK de Mercado Pago
+const mercadopago = require("mercadopago");
 
 
 
@@ -21,12 +24,12 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use((error, req, res, next)=>{
-    res.status(400).json({
-      status: 'error',  
-      message: error.message,
-    })
-}) ;
+app.use((error, req, res, next) => {
+  res.status(400).json({
+    status: 'error',
+    message: error.message,
+  })
+});
 
 
 
@@ -49,7 +52,7 @@ const bcryptjs = require("bcryptjs");
 const session = require("express-session");
 const connection = require("../database/database");
 const { randomInt } = require("crypto");
-const { Result } = require("express-validator");
+const { Result, body } = require("express-validator");
 const { cp } = require("fs");
 const { parse } = require("path");
 const { send } = require("process");
@@ -72,11 +75,22 @@ app.listen(app.get("port"), () => {
 });
 
 
+// Agrega credenciales
+mercadopago.configure({
+  access_token: "TEST-2952099168291055-121713-7423f181440a11fdcc0c80bad32941c8-751601749",
+});
 
 
 
 
 
+
+
+
+/*
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+*/
 
 //Scraping Web
 //Inicio Scrapping H&M
@@ -85,62 +99,119 @@ app.post('/scrapHm', async (req, res) => {
 
   (async () => {
     try {
-      
-    
-    const data = req.body;
-
-    const urls = data.url;
 
 
+<<<<<<< HEAD
     const browser = await puppeteer.launch({ headless: false});
     const page = await browser.newPage();
     await page.goto(urls);
+=======
+      const data = req.body;
+
+      const urls = data.url;
+>>>>>>> 467bd3596f068c9d70bc9af47ccc2a21444caaca
 
 
-    await page.waitForSelector('#js-product-name > div > h1')
-
-    //Scraping Product Title
-    let title = await page.$('#js-product-name > div > h1');
-    let Titulo = await page.evaluate(el => el.textContent, title);
+      const browser = await puppeteer.launch({ headless: false });
+      const page = await browser.newPage();
+      await page.goto(urls);
 
 
-    //Scraping Product Price
-    let price = await page.$('#product-price > div > span');
-    let Precio = await page.evaluate(el => el.textContent, price);
+      await page.waitForSelector('#js-product-name > div > h1')
+
+      //Scraping Product Title
+      let title = await page.$('#js-product-name > div > h1');
+      let Titulo = await page.evaluate(el => el.textContent, title);
 
 
-    //Scraping product Size
-    const size = await page.$$('#picker-1 > ul > li .value');
-    let item = [];
-    for (let index = 0; index < size.length; index++) {
-      const element = size[index];
-      const tamano = await page.evaluate(element => element.textContent, element);
+      //Scraping Product Price
+      let price = await page.$('#product-price > div > span');
+      let Precio = await page.evaluate(el => el.textContent, price);
 
-      item.push(tamano);
 
+      //Scraping product Size
+      const size = await page.$$('#picker-1 > ul > li .value');
+      let item = [];
+      for (let index = 0; index < size.length; index++) {
+        const element = size[index];
+        const tamano = await page.evaluate(element => element.textContent, element);
+
+        item.push(tamano);
+
+      }
+      //Scraping Product Color
+      let colors = await page.$('#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > div.sub-content.product-detail-info.product-detail-meta.inner.sticky-on-scroll.semi-sticky > div > div.product-colors.miniatures.clearfix.slider-completed.loaded > h3');
+      let Color = await page.evaluate(el => el.textContent, colors);
+      const Imagen1 = await page.$eval("#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews.best-price-highlight-pdp > div.module.product-description.sticky-wrapper > figure.pdp-image.product-detail-images.product-detail-main-image > div > img", img => img.src);
+      const Imagen2 = await page.$eval("#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > figure:nth-child(4) > img", img => img.src);
+
+      const Meesagge = "Todos los derechos de los productos expuestos quedan reservados a nombre de la tienda internacional @H&M Hennes & Mauritz AB"
+
+      await browser.close();
+      res.render("product-detail.ejs", {
+        Titulo: Titulo,
+        Precio: Precio,
+        Color: Color,
+        Tamn: item,
+        Imagen1: Imagen1,
+        Imagen2: Imagen2,
+        Meesagge: Meesagge,
+        Tienda: 'H&M'
+      });
+
+      var currency = Precio; //it works for US-style currency strings as well
+      var cur_re = /\D*(\d+|\d.*?\d)(?:\D+(\d{2}))?\D*$/;
+      var parts = cur_re.exec(currency);
+      var number = parseFloat(parts[1].replace(/\D/, '') + '.' + (parts[2] ? parts[2] : '00'));
+      number = (number * 860) + 32000;
+      console.log(number);
+
+      // Crea un objeto de preferencia
+      let preference = {
+        items: [
+          {
+            title: Titulo,
+            unit_price: number,
+            quantity: 1,
+          },
+        ],
+      };
+
+      mercadopago.preferences
+        .create(preference)
+        .then(function (response) {
+          // Este valor reemplazará el string "<%= global.id %>" en tu HTML
+          global.id = response.body.id;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+
+
+      /*
+      productos = [
+        {
+          nombre: Titulo,
+          precio: Precio,
+          talla: talla,
+          color: Color,
+          imagen: Imagen2,
+          tienda: 'H&M'
+        }
+      ]
+
+      app.post("api/pay", (req, res) => {
+        console.log(req.body);
+        res.send(productos)
+      });*/
+
+
+
+
+    } catch (error) {
+      throw error;
     }
-    //Scraping Product Color
-    let colors = await page.$('#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > div.sub-content.product-detail-info.product-detail-meta.inner.sticky-on-scroll.semi-sticky > div > div.product-colors.miniatures.clearfix.slider-completed.loaded > h3');
-    let Color = await page.evaluate(el => el.textContent, colors);
-    const Imagen1 = await page.$eval("#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews.best-price-highlight-pdp > div.module.product-description.sticky-wrapper > figure.pdp-image.product-detail-images.product-detail-main-image > div > img", img => img.src);
-    const Imagen2 = await page.$eval("#main-content > div.product.parbase > div.layout.pdp-wrapper.product-detail.sticky-footer-wrapper.js-reviews > div.module.product-description.sticky-wrapper > figure:nth-child(4) > img", img => img.src);
-
-    const Meesagge = "Todos los derechos de los productos expuestos quedan reservados a nombre de la tienda internacional @H&M Hennes & Mauritz AB"
-
-    await browser.close();
-    res.render("product-detail.ejs", {
-      Titulo: Titulo,
-      Precio: Precio,
-      Color: Color,
-      Tamn: item,
-      Imagen1: Imagen1,
-      Imagen2: Imagen2,
-      Meesagge: Meesagge,
-      Tienda: 'H&M'
-    });
-  } catch (error) {
-    throw error;
-  }
   })();
 })
 
@@ -367,80 +438,96 @@ app.post('/scrapNike', async (req, res) => {
 app.post('/scrapZara', async (req, res) => {
 
   try {
-    
-  
-  (async () => {
-    const data = req.body;
-
-    const urls = data.url;
 
 
-    const browser = await puppeteer.launch({ headless: false });
-    const page = await browser.newPage();
-    await page.goto(urls);
+    (async () => {
+      const data = req.body;
+
+      const urls = data.url;
 
 
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36')
-
-    await page.waitForSelector('.product-detail-view__side-bar')
-
-    //Scraping Product Title
-    let title = await page.$('.product-detail-view__side-bar .product-detail-info__header h1');
-    let Titulo = await page.evaluate(el => el.textContent, title);
-    //Scraping Product Price
-    let price = await page.$('#main > article > div.product-detail-view__content > div > div.product-detail-view__side-bar > div.product-detail-info > div.product-detail-info__price > div > span > span > span > div > span');
-    let Precio = await page.evaluate(el => el.textContent, price);
+      const browser = await puppeteer.launch({ headless: false });
+      const page = await browser.newPage();
+      await page.goto(urls);
 
 
-    //Scraping product Size
-    const size = await page.$$('#main > article > div.product-detail-view__content > div.product-detail-view__main > div.product-detail-view__side-bar > div.product-detail-info > div.size-selector.product-detail-info__size-selector.size-selector--is-open.size-selector--expanded ul [data-qa-action=size-in-stock] span');
-    let item = [];
-    for (let index = 0; index < size.length; index++) {
-      const element = size[index];
-      const tamano = await page.evaluate(element => element.textContent, element);
+      await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36')
 
-      item.push(tamano);
+      await page.waitForSelector('.product-detail-view__side-bar')
 
-    }
+      //Scraping Product Title
+      let title = await page.$('.product-detail-view__side-bar .product-detail-info__header h1');
+      let Titulo = await page.evaluate(el => el.textContent, title);
+      //Scraping Product Price
+      let price = await page.$('#main > article > div.product-detail-view__content > div > div.product-detail-view__side-bar > div.product-detail-info > div.product-detail-info__price > div > span > span > span > div > span');
+      let Precio = await page.evaluate(el => el.textContent, price);
 
 
+      //Scraping product Size
+      const size = await page.$$('#main > article > div.product-detail-view__content > div.product-detail-view__main > div.product-detail-view__side-bar > div.product-detail-info > div.size-selector.product-detail-info__size-selector.size-selector--is-open.size-selector--expanded ul [data-qa-action=size-in-stock] span');
+      let item = [];
+      for (let index = 0; index < size.length; index++) {
+        const element = size[index];
+        const tamano = await page.evaluate(element => element.textContent, element);
 
-    //Scraping Product Color
-    let colors = await page.$('#main > article > div > div.product-detail-view__main > div.product-detail-view__side-bar > div.product-detail-info > div.product-detail-color-selector.product-detail-info__color-selector > p');
-    let Color = await page.evaluate(el => el.textContent, colors);
+        item.push(tamano);
+
+      }
 
 
 
+      //Scraping Product Color
+      let colors = await page.$('#main > article > div > div.product-detail-view__main > div.product-detail-view__side-bar > div.product-detail-info > div.product-detail-color-selector.product-detail-info__color-selector > p');
+      let Color = await page.evaluate(el => el.textContent, colors);
 
-    //Scraping Product Image
-    const Imagen1 = await page.$eval("#main > article > div.product-detail-view__content > div.product-detail-view__main > div.product-detail-view__main-content > section > ul > li:nth-child(1) > button > div > div > picture > img", img => img.src);
-    const Imagen2 = await page.$eval("#main > article > div.product-detail-view__content > div.product-detail-view__main > div.product-detail-view__main-content > section > ul > li:nth-child(2) > button > div > div > picture > img", img => img.src);
 
-    //console.log(('El titulo es: '+Titulo));
-    //console.log(('El Precio es: '+Precio));
-    //console.log(('El Color es: '+Color));
-    //console.log(('url imagen es: '+Imagen1));
-    //console.log(('url imagen es: '+Imagen2));
 
-    const Meesagge = "Todos los derechos de los productos expuestos quedan reservados a nombre de la tienda internacional @Zara"
 
-    await browser.close();
+      //Scraping Product Image
+      const Imagen1 = await page.$eval("#main > article > div.product-detail-view__content > div.product-detail-view__main > div.product-detail-view__main-content > section > ul > li:nth-child(1) > button > div > div > picture > img", img => img.src);
+      const Imagen2 = await page.$eval("#main > article > div.product-detail-view__content > div.product-detail-view__main > div.product-detail-view__main-content > section > ul > li:nth-child(2) > button > div > div > picture > img", img => img.src);
 
-    res.render("product-detail.ejs", {
-      Titulo: Titulo,
-      Precio: Precio,
-      Color: Color,
-      Tamn: item,
-      Imagen1: Imagen1,
-      Imagen2: Imagen2,
-      Tienda: "Zara",
-      Meesagge: Meesagge
-    });
+      //console.log(('El titulo es: '+Titulo));
+      //console.log(('El Precio es: '+Precio));
+      //console.log(('El Color es: '+Color));
+      //console.log(('url imagen es: '+Imagen1));
+      //console.log(('url imagen es: '+Imagen2));
 
-  })();
-} catch (error) {
-   res.status(400).json();
-}
+      const Meesagge = "Todos los derechos de los productos expuestos quedan reservados a nombre de la tienda internacional @Zara"
+
+      await browser.close();
+
+      res.render("product-detail.ejs", {
+        Titulo: Titulo,
+        Precio: Precio,
+        Color: Color,
+        Tamn: item,
+        Imagen1: Imagen1,
+        Imagen2: Imagen2,
+        Tienda: "Zara",
+        Meesagge: Meesagge
+      });
+      /*
+      productos = [
+        {
+          nombre: Titulo,
+          precio: Precio,
+          talla: talla,
+          color: Color,
+          imagen: Imagen2,
+          tienda: 'Zara'
+        }
+      ]
+
+      app.post("api/pay", (req, res) => {
+        console.log(req.body);
+        res.send(productos)
+      });*/
+
+    })();
+  } catch (error) {
+    res.status(400).json();
+  }
 })
 
 

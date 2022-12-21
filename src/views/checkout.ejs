@@ -28,54 +28,9 @@
 
                         </div>
 
-                        <form action="orden" method="GET">
-                            <div class="form first">
-                                <div class="details personal">
-            
-                                    <fieldset id="fieldset-billing">
-                                        <legend>Detalles Boleta y Envio</legend>
-                                        <div>
-                                            <label for="name">Nombre</label>
-                                            <input type="text" name="name" id="name" data-type="string"
-                                                placeholder="Ingrese nombre completo" required />
-                                        </div>
-                                        <div>
-                                            <label for="rut">Rut</label>
-                                            <input type="text" name="rut" id="rut" data-type="string" placeholder="Ingrese Rut"
-                                                required />
-                                        </div>
-                                        <div>
-                                            <label for="email">Email</label>
-                                            <input type="email" name="email" id="email" data-type="expression"
-                                                placeholder="Ingrese correo electrónico" required />
-                                        </div>
-            
-                                        <div>
-                                            <label for="telefono">Telefono</label>
-                                            <input type="tel" placeholder="Ingrese telefono: +569XXXXXXXX" name="telefono"
-                                                id="telefono" data-type="string" required />
-                                        </div>
-                                        <div>
-                                            <label for="address">Direccion</label>
-                                            <input type="text" name="address" id="address" data-type="string"
-                                                placeholder="Ingrese Direccion" required />
-                                        </div>
-                                        <div>
-                                            <label for="comuna">Comuna</label>
-                                            <input type="text" name="comuna" id="comuna" data-type="string"
-                                                placeholder="Ingrese Comuna" required />
-                                        </div>
-            
-                                        <div>
-                                            <label for="city">Ciudad</label>
-                                            <input type="text" name="city" id="city" data-type="string" placeholder="Ingrese Ciudad"
-                                                required />
-                                        </div>
-                                    </fieldset>
-                                    <input type="submit"  value="Continuar" class="btn-block btn-blue" />
-                                </div>
-                            </div>
-                        </form>
+                        <div id="detalles-envio" class="form first">
+
+                        </div>
 
                     </div>
 
@@ -86,7 +41,9 @@
                         <hr>
                         <div class="row">
                             <div class="col" style="padding-left:0;">ITEMS 1</div>
-                            <div class="col text-right">$6.229</div>
+                            <div id="precio-checkout" class="col text-right">
+
+                            </div>
                         </div>
                         <form>
                             <p>SHIPPING</p>
@@ -98,8 +55,7 @@
                             <div class="col">PRECIO TOTAL</div>
                             <div class="col text-right">$6.229</div>
                         </div>
-                        <a href="/registration" class="btn" id="buy-btn">COMPRAR</a>
-
+                        <input type="submit" value="Pagar" class="btn-block btn-blue" />
                     </div>
 
                 </div>

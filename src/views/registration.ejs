@@ -1,102 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!----======== CSS ======== -->
-    <link rel="stylesheet" href="/css/registration-style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!----===== Iconscout CSS ===== -->
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
-    />
+  <!----======== CSS ======== -->
+  <link rel="stylesheet" href="/css/registration-style.css" />
 
-    <title>Regístrate | WorldShop</title>
-  </head>
-  <body>
-    <div class="container">
-      <header>Registrarse</header>
+  <!----===== Iconscout CSS ===== -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
 
-      <form action="/regi" method="POST">
-        <div class="form first">
-          <div class="details personal">
-            <span class="title">Datos Personales</span>
+  <title>Regístrate | WorldShop</title>
+</head>
 
-            <div class="fields">
-              <div class="input-field"  >
-                <label>Nombre y Apellido</label>
-                <input type="text"name="nombre"id="nombre" placeholder="Ingresa tu Nombre y Apellido" required />
-              </div>
-              <div class="input-field"  >
-                <label>Usuario</label>
-                <input type="text"name="username"id="username" placeholder="Ingresa tu nombre de usuario" required />
-              </div>
+<body>
+  <div class="container">
+    <header>Registrarse</header>
 
-              <div class="input-field" id="direc" >
-                <label>Direccion</label>
-                <input type="text"name="direc" placeholder="Ingresa tu dirección" required />
-              </div>
+    <form action="/regi" method="POST">
+      <div class="form first">
+        <div class="details personal">
+          <span class="title">Datos Personales</span>
 
-              <div class="input-field" id="ema"  >
-                <label>Email</label>
-                <input type="email"name="ema" placeholder="Ingresa tu correo electrónico" required />
-              </div>
-              <div class="input-field" id="password" >
-                <label>Ingresa tu contraseña</label>
-                <input
-                  type="password"
-                  name="password"
-                  
-                  required
-                />
-              </div>
-
-              <div class="input-field" id="num" >
-                <label>Número Telefónico</label>
-                <input
-                  type="tel"
-                  name="num"
-                  placeholder="+569XXXXXXXX"
-                  required
-                />
-              </div>
-
-              <div class="input-field" id="gen" >
-                <label>Género</label>
-                <select name="gen" required>
-                  <option disabled selected>Selecciona un género</option>
-                  <option>Hombre</option>
-                  <option>Mujer</option>
-                  <option>No Binario</option>
-                  <option>Otro</option>
-                </select>
-              </div>
+          <div class="fields">
+            <div class="input-field">
+              <label>Nombre y Apellido</label>
+              <input type="text" name="nombre" id="nombre" placeholder="Ingresa tu Nombre y Apellido" required />
             </div>
-          </div>
-          
-          
+            <div class="input-field">
+              <label>Usuario</label>
+              <input type="text" name="username" id="username" placeholder="Ingresa tu nombre de usuario" required />
+            </div>
 
-            <div class="buttons">
-              <div class="backBtn">
-                <i class="uil uil-navigator"></i>
-                <a href="/shoppingcart" style="text-decoration: none; color:#FFF;"><span class="btnText">Atrás</span></a>
-              </div>
+            <div class="input-field" id="direc">
+              <label>Direccion</label>
+              <input type="text" id="direccion" name="direc" placeholder="Ingresa tu dirección" required />
+            </div>
 
-              <button class="sumbit">
-                <span class="btnText">Registrarse</span>
-                <i class="uil uil-navigator"></i>
-              </button>
+            <div class="input-field" id="ema">
+              <label>Email</label>
+              <input type="email" id="email" name="ema" placeholder="Ingresa tu correo electrónico" required />
+            </div>
+            <div class="input-field" id="password">
+              <label>Ingresa tu contraseña</label>
+              <input type="password" name="password" required />
+            </div>
+
+            <div class="input-field" id="num">
+              <label>Número Telefónico</label>
+              <input type="tel" id="telefono" name="num" placeholder="+569XXXXXXXX" required />
+            </div>
+
+            <div class="input-field" id="gen">
+              <label>Género</label>
+              <select id="genero" name="gen" required>
+                <option disabled selected>Selecciona un género</option>
+                <option>Hombre</option>
+                <option>Mujer</option>
+                <option>No Binario</option>
+                <option>Otro</option>
+              </select>
             </div>
           </div>
         </div>
-      </form>
-    </div>
 
-    <!--<script src="script.js"></script>-->
-   
-  
-  </body>
+
+
+        <div class="buttons">
+          <div class="backBtn">
+            <i class="uil uil-navigator"></i>
+            <a href="/shoppingcart" style="text-decoration: none; color:#FFF;"><span class="btnText">Atrás</span></a>
+          </div>
+
+          <button id="registrar" class="sumbit">
+            <span class="btnText">Registrarse</span>
+            <i class="uil uil-navigator"></i>
+          </button>
+
+
+          <script>
+            let cliente = [];
+            document.getElementById('registrar').onclick = async () => {
+              console.log('click');
+              var select = document.getElementById("genero");
+              var gender = select.options[select.selectedIndex].text;
+              cliente = [
+                {
+                  cnombre: document.getElementById('nombre').value,
+                  cdireccion: document.getElementById('direccion').value,
+                  ccorreo: document.getElementById('email').value,
+                  ctelefono: document.getElementById('telefono').value,
+                  cgenero: gender,
+                }
+              ]
+              localStorage.setItem("usuariocliente", JSON.stringify(cliente));
+            };
+          </script>
+
+
+
+        </div>
+      </div>
+  </div>
+  </form>
+  </div>
+
+  <!--<script src="script.js"></script>-->
+
+
+</body>
+
 </html>

@@ -10,7 +10,7 @@ const mercadopago = require("mercadopago");
 
 
 // Settings
-app.set("port", 80);
+
 
 app.set("views", path.join(__dirname, "views"));
 
@@ -68,10 +68,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 
 //server listening
-app.listen(app.get("port"), () => {
-  console.log("Server on port", app.get("port"));
-});
-
+const serverHttp = http.createServer(app);
+serverHttp.listen(process.env.HTTP_PORT, process.env.IP);
+serverHttp.on('listening', () => console.info(`Notes App running at http://${process.env.IP}:${process.env.HTTP_PORT}`));
 
 
 // Agrega credenciales

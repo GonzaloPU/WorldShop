@@ -9,8 +9,8 @@ window.onload = async () => {
   var usuariocliente = JSON.parse(localStorage.getItem("usuariocliente") || "[]");
   mostrarProducto(listaproductos);
   mostrarPrecio(listaproductos);
-  mostrarDetalles(usuariocliente);
   mostrarTotal(listaproductos);
+  mostrarDetalles(usuariocliente);
 }
 
 function mostrarProducto(listaproductos) {
